@@ -10,8 +10,8 @@
     "noEmit": true,
     "noImplicitAny": true,
     "strict": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "exclude": ["node_modules"],
-  "include": ["*.ts", "./.eslintrc.js"]
+  "include": [".eslintrc.js", "**/*.ts", "**/*.tsx"]
 }
