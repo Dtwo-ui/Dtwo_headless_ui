@@ -11,6 +11,8 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:jsx-a11y/recommended',
+    'plugin:testing-library/react',
+    'plugin:jest-dom/recommended',
   ],
   overrides: [
     {
@@ -23,14 +25,30 @@ module.exports = {
       },
     },
   ],
+
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
+
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'import', 'jsx-a11y'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+    'import',
+    'jsx-a11y',
+    'testing-library',
+    'jest-dom',
+  ],
   rules: {
+    'react/react-in-jsx-scope': 'off',
     'no-console': 'error',
   },
 };
