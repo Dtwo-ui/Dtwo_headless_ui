@@ -11,7 +11,8 @@
     "noImplicitAny": true,
     "strict": true,
     "skipLibCheck": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node"]
   },
   "exclude": ["node_modules"],
   "include": [".eslintrc.js", "**/*.ts", "**/*.tsx"]
