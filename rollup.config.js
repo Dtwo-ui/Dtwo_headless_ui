@@ -2,13 +2,12 @@ import typescript from 'rollup-plugin-typescript2';
 import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-
-const extensions = ['.ts', 'tsx', '.js', '.jsx'];
-const tsconfigOverride = { compilerOptions: { module: 'ESNext', moduleResolution: 'node' } };
+const extensions = ['.ts', '.tsx', '.js', '.jsx'];
+// const tsconfigOverride = { compilerOptions: { module: 'ESNext', moduleResolution: 'node' } };
 
 export default [
   {
-    input: './index.ts',
+    input: './index.tsx',
     output: [
       {
         dir: './dist',
@@ -21,12 +20,13 @@ export default [
         entryFileNames: 'exampleES.js',
       },
     ],
-    external: ['/node_modules/'],
+    external: ['react', 'react-dom'],
     plugins: [
-      typescript({ tsconfig: '../../tsconfig.json', tsconfigOverride }),
-      alias({}),
-      // commonjs(),
-      nodeResolve({ extensions }),
+      // alias({}),
+      nodeResolve(),
+
+      commonjs(),
+      typescript({ tsconfig: '../../tsconfig.json' }),
     ],
   },
 ];
