@@ -3,7 +3,7 @@ import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 
-const extensions = ['.ts', 'tsx', '.js', 'jsx'];
+const extensions = ['.ts', 'tsx', '.js', '.jsx'];
 const tsconfigOverride = { compilerOptions: { module: 'ESNext', moduleResolution: 'node' } };
 
 export default [
@@ -25,7 +25,7 @@ export default [
     plugins: [
       typescript({ tsconfig: '../../tsconfig.json', tsconfigOverride }),
       alias({}),
-      commonjs(),
+      // commonjs(),
       nodeResolve({ extensions }),
     ],
   },

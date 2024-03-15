@@ -2,7 +2,7 @@
   "name": "test2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.tsx",
   "scripts": {
     "test": "vitest",
     "test:watch": "vitest run --watch",
