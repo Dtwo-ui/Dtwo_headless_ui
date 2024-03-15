@@ -1,12 +1,12 @@
 {
-  "name": "test",
+  "name": "test2",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
     "test": "vitest",
     "test:watch": "vitest run --watch",
-    "build": "rollup -c ../../rollup.config.js "
+    "build": "rollup -c ../../rollup.config.js"
   },
   "keywords": [],
   "author": "",
