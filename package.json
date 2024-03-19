@@ -29,6 +29,7 @@
     "@types/node": "^20.11.25",
     "@types/react": "^18.2.62",
     "@types/react-dom": "^18.2.19",
+    "@types/rollup-plugin-peer-deps-external": "^2.2.5",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
@@ -43,6 +44,8 @@
     "jsdom": "^24.0.0",
     "prettier": "^3.1.1",
     "rollup": "^4.13.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^7.6.17",
     "turbo": "latest",
@@ -61,6 +64,5 @@
   },
   "eslintIgnore": [
     "vite.config.js"
-  ],
-  "type": "module"
+  ]
 }
