@@ -5,11 +5,9 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import rollupPluginPeerDepsExternalModule from 'rollup-plugin-peer-deps-external';
 import process from 'process';
 import path from 'path';
-import { dts } from 'rollup-plugin-dts';
 
 const tsconfigPath = path.resolve(process.cwd(), 'tsconfig.json');
 const extensions = ['.ts', '.tsx', '.js', '.jsx'];
-// const tsconfigOverride = { compilerOptions: { module: 'esnext', moduleResolution: 'node' } };
 
 export default [
   {
@@ -32,7 +30,6 @@ export default [
       nodeResolve({ extensions }),
       commonjs(),
       typescript({ tsconfig: tsconfigPath }),
-      dts(),
     ],
   },
 ];

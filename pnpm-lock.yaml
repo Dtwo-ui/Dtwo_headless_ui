@@ -111,9 +111,6 @@ importers:
       rollup:
         specifier: ^4.13.0
         version: 4.13.0
-      rollup-plugin-dts:
-        specifier: ^6.1.0
-        version: 6.1.0(rollup@4.13.0)(typescript@5.3.3)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
         version: 2.2.4(rollup@4.13.0)
@@ -8684,20 +8681,6 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
-    dev: true
-
-  /rollup-plugin-dts@6.1.0(rollup@4.13.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-ijSCPICkRMDKDLBK9torss07+8dl9UpY9z1N/zTeA1cIqdzMlpkV3MOOC7zukyvQfDyxa1s3Dl2+DeiP/G6DOw==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      rollup: ^3.29.4 || ^4
-      typescript: ^4.5 || ^5.0
-    dependencies:
-      magic-string: 0.30.8
-      rollup: 4.13.0
-      typescript: 5.3.3
-    optionalDependencies:
-      '@babel/code-frame': 7.23.5
     dev: true
 
   /rollup-plugin-peer-deps-external@2.2.4(rollup@4.13.0):
