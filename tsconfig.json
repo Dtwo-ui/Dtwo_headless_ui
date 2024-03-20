@@ -14,7 +14,8 @@
     "jsx": "react-jsx",
     "types": ["node", "@testing-library/jest-dom"],
     "moduleResolution": "node",
-    "declaration": true
+    "declaration": true,
+    "declarationMap": true
   },
   "exclude": ["node_modules", "vitest.workspace.ts", "**/dist/**/*"],
   "include": [".eslintrc.cjs", "rollup.config.js"]
