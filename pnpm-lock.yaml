@@ -143,7 +143,7 @@ importers:
         version: 18.2.62
       '@types/react-dom':
         specifier: '*'
-        version: 0.14.1-alpha
+        version: 18.2.19
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -151,7 +151,23 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
 
-  packages/test2: {}
+  packages/test2:
+    dependencies:
+      '@types/react':
+        specifier: '*'
+        version: 18.2.62
+      '@types/react-dom':
+        specifier: '*'
+        version: 18.2.19
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      test:
+        specifier: workspace:*
+        version: link:../test
 
 packages:
 
@@ -3941,17 +3957,10 @@ packages:
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
     dev: true
 
-  /@types/react-dom@0.14.1-alpha:
-    resolution: {integrity: sha512-gkRIB/doX+2fgH/B7E2/TxIjB3TcbMa2BXAWnuo1MjSe9YSx/rnNeG96bbqgk2tDRo4BPtHN1s75dDzMbBsLZw==}
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
       '@types/react': 18.2.62
-    dev: true
 
   /@types/react@18.2.62:
     resolution: {integrity: sha512-l3f57BbaEKP0xcFzf+5qRG8/PXykZiuVM6eEoPtqBPCp6dxO3HhDkLIgIyXPhPKNAeXn3KO2pEaNgzaEo/asaw==}
