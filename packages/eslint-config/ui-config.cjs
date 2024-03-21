@@ -2,7 +2,7 @@ const path = require('path');
 const rootDir = __dirname;
 
 const tsconfigPath = path.resolve(rootDir, 'tsconfig.json');
-const base = require('../../.eslintrc.cjs');
+const base = require('./base.cjs');
 
 module.exports = {
   ...base,
