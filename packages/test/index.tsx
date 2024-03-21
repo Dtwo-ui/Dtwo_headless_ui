@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDom from 'react-dom/client';
 import { VAR1, Com1 } from './home';
 

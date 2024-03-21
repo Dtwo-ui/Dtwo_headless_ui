@@ -1,3 +1,4 @@
+console.log('wwww');
 export const Com1 = () => {
   return <h1>111</h1>;
 };

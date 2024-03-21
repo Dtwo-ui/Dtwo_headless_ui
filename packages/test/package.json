@@ -17,6 +17,9 @@
     "@types/react": "*",
     "@types/react-dom": "*"
   },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
