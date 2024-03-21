@@ -1,15 +1,15 @@
-const path = require('path')
+const path = require('path');
 const rootDir = __dirname;
 
-const tsconfigPath= path.resolve(rootDir, 'tsconfig.json');
+const tsconfigPath = path.resolve(rootDir, 'tsconfig.json');
 const base = require('../../.eslintrc.cjs');
 
 module.exports = {
-    ...base,
-    root: true,
+  ...base,
+  root: true,
 
-    parserOptions:{
-        ...base.parserOptions,
-        project: tsconfigPath
-    }
+  parserOptions: {
+    ...base.parserOptions,
+    project: tsconfigPath,
+  },
 };

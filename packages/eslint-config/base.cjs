@@ -41,7 +41,7 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'no-console': 'error',
+    'no-console': 'warn',
   },
-  ignorePatterns: ['.eslintrc.cjs', '**/*.d.ts', 'dist/*'],
+  ignorePatterns: ['base.cjs', '**/*.d.ts', 'dist/*'],
 };

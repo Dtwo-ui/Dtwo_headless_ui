@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "files": [
-    "base.js",
-    "ui-config.js"
+    "base.cjs",
+    "ui-config.cjs"
   ],
   "devDependencies": {
     "eslint-config-prettier": "^9.1.0",
