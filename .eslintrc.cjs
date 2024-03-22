@@ -6,5 +6,5 @@ const tsconfigPath = path.resolve(rootDir, 'tsconfig.json');
 module.exports = {
   root: true,
   extends: ['@repo/eslint-config/base.cjs'],
-  ignorePattern: ['apps/**', 'packages/**'],
+  // ignorePattern: ['apps/**', 'packages/**'],
 };
