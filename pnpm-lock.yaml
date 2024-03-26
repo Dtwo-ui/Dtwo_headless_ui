@@ -18,6 +18,9 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:packages/typescript-config
       '@rollup/plugin-alias':
         specifier: ^5.1.0
         version: 5.1.0(rollup@4.13.0)
@@ -160,6 +163,9 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
 
   packages/test2:
     dependencies:
@@ -178,6 +184,8 @@ importers:
       test:
         specifier: workspace:*
         version: link:../test
+
+  packages/typescript-config: {}
 
 packages:
 
