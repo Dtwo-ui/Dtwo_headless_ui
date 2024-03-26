@@ -1,7 +1,5 @@
 
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./base.json",
-  "include": ["**/*.tsx", "**/*.ts"],
-  "exclude": [ "dist/**/*.d.ts" ]
+  "extends": "./base.json"
 }

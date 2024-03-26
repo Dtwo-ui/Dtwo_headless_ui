@@ -19,6 +19,8 @@
     "@types/react-dom": "*"
   },
   "dependencies": {
-    "test": "workspace:*"
+    "test": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/ts-config": "workspace:*"
   }
 }

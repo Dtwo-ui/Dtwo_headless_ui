@@ -1,5 +1,4 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": ["**/*.tsx", "**/*.ts"],
-  "exclude": ["dist/**/*.d.ts"]
+  "extends": "@repo/ts-config/ui.json",
+  "include": ["**/*.tsx", "**/*.ts"]
 }
