@@ -1,5 +1,4 @@
 import typescript from 'rollup-plugin-typescript2';
-import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import rollupPluginPeerDepsExternalModule from 'rollup-plugin-peer-deps-external';
@@ -16,17 +15,16 @@ export default [
       {
         dir: './dist',
         format: 'cjs',
-        entryFileNames: 'exampleCJS.cjs',
+        entryFileNames: 'index.cjs',
       },
       {
         dir: './dist',
         format: 'es',
-        entryFileNames: 'exampleES.js',
+        entryFileNames: 'index.js',
       },
     ],
     plugins: [
       rollupPluginPeerDepsExternalModule(),
-      // alias({}),
       nodeResolve({ extensions }),
       commonjs(),
       typescript({ tsconfig: tsconfigPath }),
