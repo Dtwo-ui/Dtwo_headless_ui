@@ -18,6 +18,9 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
+      '@repo/ts-config':
+        specifier: workspace:*
+        version: link:packages/ts_config
       '@rollup/plugin-alias':
         specifier: ^5.1.0
         version: 5.1.0(rollup@4.13.0)
@@ -160,9 +163,18 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@repo/ts-config':
+        specifier: workspace:*
+        version: link:../ts_config
 
   packages/test2:
     dependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/ts-config':
+        specifier: workspace:*
+        version: link:../ts_config
       '@types/react':
         specifier: '*'
         version: 18.2.62
@@ -178,6 +190,8 @@ importers:
       test:
         specifier: workspace:*
         version: link:../test
+
+  packages/ts_config: {}
 
 packages:
 

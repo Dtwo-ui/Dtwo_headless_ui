@@ -18,7 +18,8 @@
     "@types/react-dom": "*"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*"
+    "@repo/eslint-config": "workspace:*",
+    "@repo/ts-config": "workspace:*"
   },
   "keywords": [],
   "author": "",
