@@ -5,6 +5,6 @@ const tsconfigPath = path.resolve(rootDir, 'tsconfig.json');
 
 module.exports = {
   root: true,
-  extends: ['@repo/eslint-config/base.cjs'],
+  extends: ['@dtwo/eslint-config/base.cjs'],
   ignorePatterns: ['vitest.workspace.ts', 'setupTest.ts'],
 };
