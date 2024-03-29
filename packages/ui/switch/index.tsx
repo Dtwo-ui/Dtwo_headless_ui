@@ -18,25 +18,46 @@ type SwitchContextT = {
   setContextValue: React.Dispatch<SwitchContextValueT>;
 };
 
-const DEFAULT_SWITCH_CONTEXT_VALUE: SwitchContextValueT = { checked: false, disabled: false };
+const SwitchProvider = (
+  props: object & {
+    children: ReactNode;
+    checked: boolean;
+    disabled: boolean;
+  },
+) => {
+  const { checked, disabled } = props;
+  const [contextValue, setContextValue] = useState<SwitchContextValueT>({
+    checked,
+    disabled,
+  });
 
-const SwitchProvider = (props: object & { children: ReactNode }) => {
-  const [contextValue, setContextValue] = useState<SwitchContextValueT>(
-    DEFAULT_SWITCH_CONTEXT_VALUE,
+  return (
+    <SwitchContext.Provider
+      {...props}
+      value={{
+        contextValue,
+        setContextValue,
+      }}
+    />
   );
-
-  return <SwitchContext.Provider {...props} value={{ contextValue, setContextValue }} />;
 };
 
 SwitchProvider.displayName = 'SWITCH_PROVIDER';
 
+type ButtonProps = React.ComponentPropsWithoutRef<'button'>;
+type SwitchProps = ButtonProps & {
+  checked?: boolean;
+  disabled?: boolean;
+};
+
 /**
  * TODO: forwardRef, SwitchProps 정해야함
  * */
-export const Switch = () => {
+export const Switch = ({ checked = false, disabled = false }: SwitchProps) => {
   return (
-    <SwitchProvider>
+    <SwitchProvider checked={checked} disabled={disabled}>
       <div>테스트</div>
+      <input type="checkbox" checked={checked} disabled={disabled} />
     </SwitchProvider>
   );
 };
