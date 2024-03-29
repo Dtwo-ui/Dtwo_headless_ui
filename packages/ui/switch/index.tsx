@@ -6,18 +6,26 @@ import { createContext, ReactNode, useState } from 'react';
 
 // 3. Thumb
 
-const SwitchContext = createContext({});
+const SwitchContext = createContext<SwitchContextT | object>({});
 
-type SwitchContextT = {
+type SwitchContextValueT = {
   checked: boolean;
   disabled: boolean;
 };
-const DEFAULT_SWITCH_CONTEXT_VALUE: SwitchContextT = { checked: false, disabled: false };
+
+type SwitchContextT = {
+  contextValue: SwitchContextValueT;
+  setContextValue: React.Dispatch<SwitchContextValueT>;
+};
+
+const DEFAULT_SWITCH_CONTEXT_VALUE: SwitchContextValueT = { checked: false, disabled: false };
 
 const SwitchProvider = (props: object & { children: ReactNode }) => {
-  const [checked, setChecked] = useState(DEFAULT_SWITCH_CONTEXT_VALUE);
+  const [contextValue, setContextValue] = useState<SwitchContextValueT>(
+    DEFAULT_SWITCH_CONTEXT_VALUE,
+  );
 
-  return <SwitchContext.Provider {...props} value={{ checked, setChecked }} />;
+  return <SwitchContext.Provider {...props} value={{ contextValue, setContextValue }} />;
 };
 
 SwitchProvider.displayName = 'SWITCH_PROVIDER';
