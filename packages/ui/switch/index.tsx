@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useContext, useState } from 'react';
 
 // 1. context
 
@@ -53,12 +53,30 @@ type SwitchProps = ButtonProps & {
 /**
  * TODO: forwardRef, SwitchProps 정해야함
  * */
-export const Switch = ({ checked = false, disabled = false }: SwitchProps) => {
+export const Switch = ({
+  checked = false,
+  disabled = false,
+  ...props
+}: SwitchProps) => {
+  const { children } = props;
+
   return (
     <SwitchProvider checked={checked} disabled={disabled}>
       <div>테스트</div>
-      <input type="checkbox" checked={checked} disabled={disabled} />
+      {children}
     </SwitchProvider>
+  );
+};
+
+export const SwitchThumb = () => {
+  const { contextValue } = useContext(SwitchContext) as SwitchContextT;
+
+  return (
+    <input
+      type="checkbox"
+      checked={contextValue.checked}
+      disabled={contextValue.disabled}
+    />
   );
 };
 

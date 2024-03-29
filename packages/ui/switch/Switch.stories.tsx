@@ -1,4 +1,4 @@
-import { Switch } from './index';
+import { Switch, SwitchThumb } from './index';
 export default {
   title: 'Design System/Avatar',
   component: Switch,
@@ -8,4 +8,8 @@ export default {
    */
 };
 
-export const Story = () => <Switch />;
+export const Story = () => (
+  <Switch checked>
+    <SwitchThumb />
+  </Switch>
+);
