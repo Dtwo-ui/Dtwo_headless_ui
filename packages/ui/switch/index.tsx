@@ -42,7 +42,7 @@ const SwitchProvider = (
 
 SwitchProvider.displayName = 'SWITCH_PROVIDER';
 
-type ButtonProps = ComponentPropsWithoutRef<'button'>;
+type ButtonProps = ComponentPropsWithoutRef<typeof Primitive.button>;
 type SwitchProps = ButtonProps & {
   checked?: boolean;
   disabled?: boolean;

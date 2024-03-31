@@ -21,29 +21,26 @@ const nodes = [
 ] as const;
 
 type PrimitivesType = {
-  [T in (typeof nodes)[number]]: React.ForwardRefExoticComponent<
-    React.PropsWithoutRef<React.ComponentProps<T>>
-  >;
+  [T in (typeof nodes)[number]]: PrimitiveForwardRefComponent<T>;
 };
 
 type ComponentPropsWithoutRef<T extends React.ElementType> = React.PropsWithoutRef<
   React.ComponentProps<T>
 >;
 
+interface PrimitiveForwardRefComponent<E extends React.ElementType>
+  extends React.ForwardRefExoticComponent<React.ComponentPropsWithRef<E>> {}
+
 const Primitive = nodes.reduce((components, htmlElement) => {
   // eslint-disable-next-line react/display-name
-  const Node = forwardRef((props: ComponentPropsWithoutRef<typeof htmlElement>, ref: any) => {
+  const Node = forwardRef((props: PrimitiveForwardRefComponent<typeof htmlElement>, ref: any) => {
     const Component: any = htmlElement;
 
-    return (
-      <Component {...props} ref={ref}>
-        {props.children}
-      </Component>
-    );
+    return <Component {...props} ref={ref} />;
   });
 
   return { ...components, [htmlElement]: Node };
 }, {} as PrimitivesType);
-
+const b = Primitive.button;
 export { Primitive };
 export type { PrimitivesType, ComponentPropsWithoutRef };
