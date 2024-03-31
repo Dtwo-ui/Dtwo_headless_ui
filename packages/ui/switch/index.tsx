@@ -1,11 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
-
+import { createContext, ReactNode, useContext, useState, forwardRef } from 'react';
+import type { ComponentPropsWithoutRef } from '@dtwo/primitive';
 // 1. context
 
 // 2. Switch
 
 // 3. Thumb
-
 const SwitchContext = createContext<SwitchContextT | object>({});
 
 type SwitchContextValueT = {
@@ -44,7 +43,7 @@ const SwitchProvider = (
 
 SwitchProvider.displayName = 'SWITCH_PROVIDER';
 
-type ButtonProps = React.ComponentPropsWithoutRef<'button'>;
+type ButtonProps = ComponentPropsWithoutRef<'button'>;
 type SwitchProps = ButtonProps & {
   checked?: boolean;
   disabled?: boolean;
@@ -53,31 +52,23 @@ type SwitchProps = ButtonProps & {
 /**
  * TODO: forwardRef, SwitchProps 정해야함
  * */
-export const Switch = ({
-  checked = false,
-  disabled = false,
-  ...props
-}: SwitchProps) => {
-  const { children } = props;
+export const Switch = forwardRef(
+  ({ checked = false, disabled = false, ...props }: SwitchProps, ref) => {
+    const { children } = props;
 
-  return (
-    <SwitchProvider checked={checked} disabled={disabled}>
-      <div>테스트</div>
-      {children}
-    </SwitchProvider>
-  );
-};
+    return (
+      <SwitchProvider checked={checked} disabled={disabled}>
+        <div>테스트</div>
+        {children}
+      </SwitchProvider>
+    );
+  },
+);
 
 export const SwitchThumb = () => {
   const { contextValue } = useContext(SwitchContext) as SwitchContextT;
 
-  return (
-    <input
-      type="checkbox"
-      checked={contextValue.checked}
-      disabled={contextValue.disabled}
-    />
-  );
+  return <input type="checkbox" checked={contextValue.checked} disabled={contextValue.disabled} />;
 };
 
 Switch.displayName = 'SWITCH';

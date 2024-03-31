@@ -147,6 +147,28 @@ importers:
 
   packages/config/ts-config: {}
 
+  packages/ui/primitive:
+    dependencies:
+      '@types/react':
+        specifier: '*'
+        version: 18.2.62
+      '@types/react-dom':
+        specifier: '*'
+        version: 18.2.19
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@dtwo/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@dtwo/ts-config':
+        specifier: workspace:*
+        version: link:../../config/ts-config
+
   packages/ui/switch:
     dependencies:
       '@types/react':
@@ -165,6 +187,9 @@ importers:
       '@dtwo/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
+      '@dtwo/primitive':
+        specifier: workspace:*
+        version: link:../primitive
       '@dtwo/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config

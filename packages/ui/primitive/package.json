@@ -1,5 +1,5 @@
 {
-  "name": "@dtwo/switch",
+  "name": "@dtwo/primitive",
   "version": "0.0.0",
   "scripts": {
     "test": "vitest",
@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@dtwo/eslint-config": "workspace:*",
-    "@dtwo/ts-config": "workspace:*",
-    "@dtwo/primitive": "workspace:*"
+    "@dtwo/ts-config": "workspace:*"
   }
 }
