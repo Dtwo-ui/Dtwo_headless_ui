@@ -1,4 +1,11 @@
-import { createContext, ReactNode, useContext, useState, forwardRef, ElementRef } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useState,
+  forwardRef,
+  ElementRef,
+} from 'react';
 import type { ComponentPropsWithoutRef } from '@dtwo/primitive';
 import { Primitive } from '@dtwo/primitive';
 // 1. context
@@ -42,7 +49,7 @@ const SwitchProvider = (
 
 SwitchProvider.displayName = 'SWITCH_PROVIDER';
 
-type ButtonProps = ComponentPropsWithoutRef<typeof Primitive.button>;
+type ButtonProps = React.ComponentPropsWithoutRef<typeof Primitive.button>;
 type SwitchProps = ButtonProps & {
   checked?: boolean;
   disabled?: boolean;
@@ -57,7 +64,7 @@ export const Switch = forwardRef<ElementRef<typeof Primitive.button>, SwitchProp
     return (
       <SwitchProvider checked={checked} disabled={disabled}>
         <div>테스트</div>
-        <Primitive.button ref={ref}></Primitive.button>
+        <Primitive.button ref={ref} {...props}></Primitive.button>
         {children}
       </SwitchProvider>
     );
