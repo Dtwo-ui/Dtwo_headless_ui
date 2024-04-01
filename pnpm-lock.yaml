@@ -99,6 +99,9 @@ importers:
       storybook:
         specifier: ^7.6.17
         version: 7.6.17
+      tslib:
+        specifier: ^2.6.2
+        version: 2.6.2
       turbo:
         specifier: latest
         version: 1.12.5

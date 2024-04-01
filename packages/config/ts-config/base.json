@@ -16,7 +16,8 @@
     "types": ["node", "@testing-library/jest-dom"],
     "moduleResolution": "node",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "importHelpers": true
   },
   "exclude": ["node_modules", "vitest.workspace.ts", "**/dist/**/*"],
   "include": [".eslintrc.cjs", "rollup.config.js"]
