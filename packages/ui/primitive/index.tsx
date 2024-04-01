@@ -41,6 +41,6 @@ const Primitive = nodes.reduce((components, htmlElement) => {
 
   return { ...components, [htmlElement]: Node };
 }, {} as PrimitivesType);
-const b = Primitive.button;
+
 export { Primitive };
 export type { PrimitivesType, ComponentPropsWithoutRef };
