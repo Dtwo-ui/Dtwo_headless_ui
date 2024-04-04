@@ -38,13 +38,9 @@ export const Switch = forwardRef<ElementRef<typeof Primitive.button>, SwitchProp
 
     return (
       <SwitchProvider value={{ checked: switchValue, disabled }}>
-        <div>테스트</div>
         <Primitive.button
           ref={ref}
-          onClick={() => {
-            setSwitchValue(prevState => !prevState);
-            console.log(switchValue);
-          }}
+          onClick={() => setSwitchValue(prevState => !prevState)}
           {...props}
         ></Primitive.button>
         {children}
@@ -53,10 +49,12 @@ export const Switch = forwardRef<ElementRef<typeof Primitive.button>, SwitchProp
   },
 );
 
-export const SwitchThumb = () => {
-  const { checked, disabled } = useSwitchContext('SWITCH_THUMB');
+type SwitchThumbProps = React.ComponentPropsWithoutRef<typeof Primitive.span>;
+export const SwitchThumb = (props: SwitchThumbProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { checked } = useSwitchContext('SWITCH_THUMB');
 
-  return <input type="checkbox" checked={checked} disabled={disabled} />;
+  return <Primitive.span {...props} />;
 };
 
 Switch.displayName = 'SWITCH';
