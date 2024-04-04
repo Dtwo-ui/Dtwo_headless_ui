@@ -1,6 +1,7 @@
 import { Switch, SwitchThumb } from './index';
+import { useState } from 'react';
 export default {
-  title: 'Design System/Avatar',
+  title: 'Design System/Switch',
   component: Switch,
   /*
    * More on Storybook parameters at:
@@ -8,8 +9,17 @@ export default {
    */
 };
 
-export const Story = () => (
-  <Switch checked>
-    <SwitchThumb />
-  </Switch>
-);
+export const Story = () => {
+  const [switchState, setSwitchState] = useState(false);
+  return (
+    <Switch
+      // checked={switchState}
+      disabled={false}
+      onChangeSwitch={() => {
+        setSwitchState(prev => !prev);
+      }}
+    >
+      <SwitchThumb />
+    </Switch>
+  );
+};

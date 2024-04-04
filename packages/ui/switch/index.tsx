@@ -9,7 +9,7 @@ import { useControllableState } from '@dtwo/use-controllable-state';
 // 3. Thumb
 
 type SwitchContextValueT = {
-  checked: boolean;
+  checked?: boolean;
   disabled: boolean;
 };
 
@@ -24,34 +24,29 @@ type ButtonProps = React.ComponentPropsWithoutRef<typeof Primitive.button>;
 type SwitchProps = ButtonProps & {
   checked?: boolean;
   disabled?: boolean;
+  onChangeSwitch?: (value: { checked?: boolean } | undefined) => void;
 };
 
 export const Switch = forwardRef<ElementRef<typeof Primitive.button>, SwitchProps>(
-  ({ checked = false, disabled = false, ...props }: SwitchProps, ref) => {
+  ({ checked, disabled = false, onChangeSwitch, ...props }: SwitchProps, ref) => {
     const { children } = props;
-    // const [contextValue, setContextValue] = useState<SwitchContextValueT>({
-    //   checked,
-    //   disabled,
-    // });
-
-    // const [test, setTest] = useState({ checked: false, disabled: false });
 
     const [switchValue, setSwitchValue] = useControllableState({
-      // value: test,
-      // onChange: () => {
-      //   console.log('컨트롤 실행');
-      //   setTest(prevChecked => ({ ...prevChecked, checked: !prevChecked!.checked }));
-      // },
-      defaultValue: { checked, disabled },
+      value: checked,
+      defaultValue: false,
+      onChange: onChangeSwitch,
     });
 
     return (
-      <SwitchProvider value={{ ...switchValue }}>
+      <SwitchProvider value={{ ...switchValue, disabled }}>
         <div>테스트</div>
         <Primitive.button
           ref={ref}
           onClick={() => {
-            setSwitchValue({ ...switchValue, checked: !switchValue.checked });
+            setSwitchValue(prevState => {
+              console.log('이전 상태', prevState);
+              return !prevState;
+            });
             console.log(switchValue);
           }}
           {...props}
