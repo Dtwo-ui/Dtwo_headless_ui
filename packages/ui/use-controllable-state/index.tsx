@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 
 type UseControllableStateProps<T> = {
-  defaultValue?: T;
+  defaultValue: T;
   value?: T;
-  onChange?: (value?: T) => void;
+  onChange?: (value: T) => void;
 };
 
-const useControllableState = <T extends object>({
+function useControllableState<T>({
   value,
   defaultValue,
   onChange = () => {},
-}: UseControllableStateProps<T>) => {
-  const [unControlledValue, setUnControlledValue] = useState<T | undefined>(defaultValue);
+}: UseControllableStateProps<T>) {
+  const [unControlledValue, setUnControlledValue] = useState<T>(defaultValue);
   const isControlled = value !== undefined;
 
   const controllableValue = isControlled ? value : unControlledValue;
@@ -21,6 +21,6 @@ const useControllableState = <T extends object>({
     : setUnControlledValue;
 
   return [controllableValue, handleChange] as const;
-};
+}
 
 export { useControllableState };
