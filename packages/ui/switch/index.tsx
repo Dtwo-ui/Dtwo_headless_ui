@@ -1,6 +1,7 @@
 import React, { useState, forwardRef, ElementRef } from 'react';
 import { Primitive } from '@dtwo/primitive';
 import { createContext } from '@dtwo/context';
+import { useControllableState } from '@dtwo/use-controllable-state';
 // 1. context
 
 // 2. Switch
@@ -28,14 +29,32 @@ type SwitchProps = ButtonProps & {
 export const Switch = forwardRef<ElementRef<typeof Primitive.button>, SwitchProps>(
   ({ checked = false, disabled = false, ...props }: SwitchProps, ref) => {
     const { children } = props;
-    const [contextValue, setContextValue] = useState<SwitchContextValueT>({
-      checked,
-      disabled,
+    // const [contextValue, setContextValue] = useState<SwitchContextValueT>({
+    //   checked,
+    //   disabled,
+    // });
+
+    const [test, setTest] = useState({ checked: false, disabled: false });
+    const [switchValue, setSwitchValue] = useControllableState({
+      value: test,
+      onChange: () => {
+        console.log('컨트롤 실행');
+        setTest(prevChecked => ({ ...prevChecked, checked: !prevChecked!.checked }));
+      },
+      defaultValue: { checked, disabled },
     });
+
     return (
-      <SwitchProvider value={{ contextValue, setContextValue }}>
+      <SwitchProvider value={{ contextValue: switchValue, setContextValue: setSwitchValue }}>
         <div>테스트</div>
-        <Primitive.button ref={ref} {...props}></Primitive.button>
+        <Primitive.button
+          ref={ref}
+          onClick={() => {
+            setSwitchValue(prevChecked => ({ ...prevChecked, checked: !prevChecked.checked }));
+            console.log(switchValue);
+          }}
+          {...props}
+        ></Primitive.button>
         {children}
       </SwitchProvider>
     );

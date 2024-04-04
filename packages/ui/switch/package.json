@@ -17,6 +17,7 @@
     "@dtwo/eslint-config": "workspace:*",
     "@dtwo/ts-config": "workspace:*",
     "@dtwo/primitive": "workspace:*",
-    "@dtwo/context": "workspace:*"
+    "@dtwo/context": "workspace:*",
+    "@dtwo/use-controllable-state": "workspace:*"
   }
 }
