@@ -13,12 +13,12 @@ type SwitchContextValueT = {
   disabled: boolean;
 };
 
-type SwitchContextT = {
-  contextValue: SwitchContextValueT;
-  setContextValue: React.Dispatch<SwitchContextValueT>;
-};
+// type SwitchContextT = {
+//   contextValue: SwitchContextValueT;
+//   setContextValue: React.Dispatch<SwitchContextValueT>;
+// };
 
-const [SwitchProvider, useSwitchContext] = createContext<SwitchContextT>('SWITCH');
+const [SwitchProvider, useSwitchContext] = createContext<SwitchContextValueT>('SWITCH');
 
 type ButtonProps = React.ComponentPropsWithoutRef<typeof Primitive.button>;
 type SwitchProps = ButtonProps & {
@@ -34,23 +34,24 @@ export const Switch = forwardRef<ElementRef<typeof Primitive.button>, SwitchProp
     //   disabled,
     // });
 
-    const [test, setTest] = useState({ checked: false, disabled: false });
+    // const [test, setTest] = useState({ checked: false, disabled: false });
+
     const [switchValue, setSwitchValue] = useControllableState({
-      value: test,
-      onChange: () => {
-        console.log('컨트롤 실행');
-        setTest(prevChecked => ({ ...prevChecked, checked: !prevChecked!.checked }));
-      },
+      // value: test,
+      // onChange: () => {
+      //   console.log('컨트롤 실행');
+      //   setTest(prevChecked => ({ ...prevChecked, checked: !prevChecked!.checked }));
+      // },
       defaultValue: { checked, disabled },
     });
 
     return (
-      <SwitchProvider value={{ contextValue: switchValue, setContextValue: setSwitchValue }}>
+      <SwitchProvider value={{ ...switchValue }}>
         <div>테스트</div>
         <Primitive.button
           ref={ref}
           onClick={() => {
-            setSwitchValue(prevChecked => ({ ...prevChecked, checked: !prevChecked.checked }));
+            setSwitchValue({ ...switchValue, checked: !switchValue.checked });
             console.log(switchValue);
           }}
           {...props}
@@ -62,9 +63,7 @@ export const Switch = forwardRef<ElementRef<typeof Primitive.button>, SwitchProp
 );
 
 export const SwitchThumb = () => {
-  const {
-    contextValue: { checked, disabled },
-  } = useSwitchContext('SWITCH_THUMB');
+  const { checked, disabled } = useSwitchContext('SWITCH_THUMB');
 
   return <input type="checkbox" checked={checked} disabled={disabled} />;
 };
