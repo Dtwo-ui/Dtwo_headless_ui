@@ -8,7 +8,7 @@ export const composeEventHandler = <E extends NonNullable<unknown>>(
   return (event: E) => {
     defaultEventHandler?.(event);
 
-    if (customDefaultPrevented === false || (event as unknown as Event).defaultPrevented) {
+    if (customDefaultPrevented === false || !(event as unknown as Event).defaultPrevented) {
       return customEventHandler?.(event);
     }
   };
