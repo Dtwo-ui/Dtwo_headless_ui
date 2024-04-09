@@ -3,6 +3,8 @@ import { Primitive } from '@dtwo/primitive';
 import { createContext } from '@dtwo/context';
 import { useControllableState } from '@dtwo/use-controllable-state';
 import { useComposeRefs } from '@dtwo/use-compose-refs';
+import { composeEventHandler } from '@dtwo/utils';
+
 // 1. context
 
 // 2. Switch
@@ -43,7 +45,9 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
       <SwitchProvider value={{ checked: switchValue, disabled }}>
         <Primitive.button
           ref={ref}
-          onClick={() => setSwitchValue(prevState => !prevState)}
+          onClick={composeEventHandler(props.onClick, () =>
+            setSwitchValue(prevState => !prevState),
+          )}
           {...props}
         ></Primitive.button>
         {children}

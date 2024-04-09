@@ -227,6 +227,9 @@ importers:
       '@dtwo/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
+      '@dtwo/utils':
+        specifier: workspace:*
+        version: link:../utils
 
   packages/ui/use-compose-refs:
     dependencies:
@@ -264,6 +267,15 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@dtwo/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@dtwo/ts-config':
+        specifier: workspace:*
+        version: link:../../config/ts-config
+
+  packages/ui/utils:
     devDependencies:
       '@dtwo/eslint-config':
         specifier: workspace:*

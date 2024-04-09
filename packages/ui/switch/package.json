@@ -19,6 +19,7 @@
     "@dtwo/primitive": "workspace:*",
     "@dtwo/context": "workspace:*",
     "@dtwo/use-controllable-state": "workspace:*",
-    "@dtwo/use-compose-refs": "workspace:*"
+    "@dtwo/use-compose-refs": "workspace:*",
+    "@dtwo/utils": "workspace:*"
   }
 }
