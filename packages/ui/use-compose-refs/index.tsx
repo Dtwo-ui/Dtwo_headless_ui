@@ -9,7 +9,7 @@ export function useComposeRefs<T>(...refs: Ref<T>[] | CallbackRef<T>[]): Ref<T> 
     for (const ref of refs) {
       if (typeof ref === 'function') {
         ref(value);
-      } else if (ref !== null || ref !== undefined) {
+      } else if (ref !== null && ref !== undefined) {
         (ref as MutableRefObject<T>).current = value;
       }
     }
