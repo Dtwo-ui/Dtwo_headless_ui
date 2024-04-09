@@ -221,6 +221,9 @@ importers:
       '@dtwo/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
+      '@dtwo/use-compose-refs':
+        specifier: workspace:*
+        version: link:../use-compose-refs
       '@dtwo/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state

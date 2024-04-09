@@ -1,7 +1,8 @@
-import React, { forwardRef, ElementRef } from 'react';
+import React from 'react';
 import { Primitive } from '@dtwo/primitive';
 import { createContext } from '@dtwo/context';
 import { useControllableState } from '@dtwo/use-controllable-state';
+import { useComposeRefs } from '@dtwo/use-compose-refs';
 // 1. context
 
 // 2. Switch
@@ -23,12 +24,14 @@ type SwitchProps = ButtonProps & {
   onChangeSwitch?: (value: boolean) => void;
 };
 
-export const Switch = forwardRef<ElementRef<typeof Primitive.button>, SwitchProps>(
+export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>, SwitchProps>(
   (
     { checked, disabled = false, defaultChecked = false, onChangeSwitch, ...props }: SwitchProps,
-    ref,
+    forwardRef,
   ) => {
     const { children } = props;
+    const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+    const ref = useComposeRefs(forwardRef, buttonRef);
 
     const [switchValue, setSwitchValue] = useControllableState({
       value: checked,

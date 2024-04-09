@@ -18,6 +18,7 @@
     "@dtwo/ts-config": "workspace:*",
     "@dtwo/primitive": "workspace:*",
     "@dtwo/context": "workspace:*",
-    "@dtwo/use-controllable-state": "workspace:*"
+    "@dtwo/use-controllable-state": "workspace:*",
+    "@dtwo/use-compose-refs": "workspace:*"
   }
 }
