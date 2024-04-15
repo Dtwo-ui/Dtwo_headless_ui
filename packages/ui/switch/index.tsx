@@ -69,10 +69,16 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
             setSwitchValue(prevState => !prevState);
             bubbleInputChange.current = !bubbleInputChange.current;
           })}
+          disabled={disabled}
           {...props}
         />
         {isFormControl && (
-          <FakeInput isBubbleChange={bubbleInputChange.current} name={props.name} />
+          <FakeInput
+            isBubbleChange={bubbleInputChange.current}
+            name={props.name}
+            aria-hidden={true}
+            tabIndex={-1}
+          />
         )}
       </SwitchProvider>
     );
