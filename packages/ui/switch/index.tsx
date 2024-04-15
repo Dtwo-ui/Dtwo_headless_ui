@@ -28,6 +28,7 @@ type ButtonProps = React.ComponentPropsWithoutRef<typeof Primitive.button>;
 type SwitchProps = ButtonProps & {
   checked?: boolean;
   disabled?: boolean;
+  required?: boolean;
   defaultChecked?: boolean;
   onChangeSwitch?: (value: boolean) => void;
   isFormControl?: boolean;
@@ -41,6 +42,7 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
       defaultChecked = false,
       onChangeSwitch,
       isFormControl = true,
+      required,
       ...props
     }: SwitchProps,
     forwardRef,
@@ -58,6 +60,9 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
     return (
       <SwitchProvider value={{ checked: switchValue, disabled }}>
         <Primitive.button
+          role="switch"
+          aria-checked={checked}
+          aria-required={required}
           ref={ref}
           onClick={composeEventHandler(props.onClick, e => {
             e.stopPropagation();
@@ -86,8 +91,7 @@ const FakeInput = (props: FakeInputProps) => {
     /**
      * TODO: descriptor 이용해서 change이벤트 발생 시킬것 꼼수 바꿔야함
      * */
-    // const changeEvent = new Event('change', { bubbles: true });
-    // input.dispatchEvent(changeEvent);
+
     input.click();
     input.checked = isBubbleChange;
   }, [isBubbleChange]);

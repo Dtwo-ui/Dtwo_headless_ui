@@ -10,15 +10,11 @@ export const Story = () => {
 
   return (
     <form
-      onClick={e => {
+      onSubmit={e => {
         e.preventDefault();
-
         console.log(e);
-        // const formData = new FormData(e.currentTarget);
-        // // console.log(formData);
-        // const data = Object.fromEntries(formData);
-        // console.log('data', data);
       }}
+      style={{ backgroundColor: 'red' }}
     >
       <Switch
         checked={switchState}
