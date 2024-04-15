@@ -45,7 +45,6 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
     }: SwitchProps,
     forwardRef,
   ) => {
-    const { children } = props;
     const buttonRef = React.useRef<HTMLButtonElement | null>(null);
     const ref = useComposeRefs(forwardRef, buttonRef);
     const bubbleInputChange = React.useRef(false);
@@ -70,7 +69,6 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
         {isFormControl && (
           <FakeInput isBubbleChange={bubbleInputChange.current} name={props.name} />
         )}
-        {children}
       </SwitchProvider>
     );
   },
@@ -85,12 +83,23 @@ const FakeInput = (props: FakeInputProps) => {
 
   useEffect(() => {
     const input = inputRef.current as HTMLInputElement;
-
+    /**
+     * TODO: descriptor 이용해서 change이벤트 발생 시킬것 꼼수 바꿔야함
+     * */
+    // const changeEvent = new Event('change', { bubbles: true });
+    // input.dispatchEvent(changeEvent);
     input.click();
     input.checked = isBubbleChange;
   }, [isBubbleChange]);
 
-  return <input type="checkbox" ref={inputRef} {...props} />;
+  return (
+    <input
+      type="checkbox"
+      ref={inputRef}
+      {...props}
+      style={{ position: 'absolute', pointerEvents: 'none', opacity: 0, margin: 0 }}
+    />
+  );
 };
 
 type SwitchThumbProps = React.ComponentPropsWithoutRef<typeof Primitive.span>;
