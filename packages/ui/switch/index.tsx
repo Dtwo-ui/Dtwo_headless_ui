@@ -51,25 +51,26 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
     const ref = useComposeRefs(forwardRef, buttonRef);
     const bubbleInputChange = React.useRef(false);
 
-    const [switchValue, setSwitchValue] = useControllableState({
+    const [controlledChecked, setControlledChecked] = useControllableState({
       value: checked,
       defaultValue: defaultChecked,
       onChange: onChangeSwitch,
     });
-
+    console.log(controlledChecked);
     return (
-      <SwitchProvider value={{ checked: switchValue, disabled }}>
+      <SwitchProvider value={{ checked: controlledChecked, disabled }}>
         <Primitive.button
           role="switch"
-          aria-checked={checked}
+          aria-checked={controlledChecked}
           aria-required={required}
           ref={ref}
           onClick={composeEventHandler(props.onClick, e => {
             e.stopPropagation();
-            setSwitchValue(prevState => !prevState);
+            setControlledChecked(prevState => !prevState);
             bubbleInputChange.current = !bubbleInputChange.current;
           })}
           disabled={disabled}
+          data-state={controlledChecked}
           {...props}
         />
         {isFormControl && (
@@ -94,12 +95,18 @@ const FakeInput = (props: FakeInputProps) => {
 
   useEffect(() => {
     const input = inputRef.current as HTMLInputElement;
-    /**
-     * TODO: descriptor 이용해서 change이벤트 발생 시킬것 꼼수 바꿔야함
-     * */
 
-    input.click();
-    input.checked = isBubbleChange;
+    const inputCheckedSetter = Object.getOwnPropertyDescriptor(
+      HTMLInputElement.prototype,
+      'checked',
+    )!.set;
+
+    if (inputCheckedSetter) {
+      inputCheckedSetter.call(input, isBubbleChange);
+
+      const fakeClickEvent = new Event('click', { bubbles: true });
+      input.dispatchEvent(fakeClickEvent);
+    }
   }, [isBubbleChange]);
 
   return (

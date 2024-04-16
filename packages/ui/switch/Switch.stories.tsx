@@ -12,6 +12,9 @@ export const Story = () => {
     <form
       onSubmit={e => {
         e.preventDefault();
+        // console.log(e);
+      }}
+      onClick={e => {
         console.log(e);
       }}
       style={{ backgroundColor: 'red' }}
