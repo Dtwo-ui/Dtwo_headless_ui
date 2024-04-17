@@ -13,7 +13,7 @@
     "strict": true,
     "skipLibCheck": true,
     "jsx": "react-jsx",
-    "types": ["node", "@testing-library/jest-dom"],
+    "types": ["node", "@testing-library/jest-dom", "vitest/globals"],
     "moduleResolution": "node",
     "declaration": true,
     "declarationMap": true,
