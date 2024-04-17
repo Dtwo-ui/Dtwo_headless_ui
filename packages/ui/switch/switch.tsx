@@ -5,24 +5,12 @@ import { useControllableState } from '@dtwo/use-controllable-state';
 import { useComposeRefs } from '@dtwo/use-compose-refs';
 import { composeEventHandler } from '@dtwo/utils';
 
-/**
- * Bubble Input
- * 1. formControl 여부
- * 2. formControl 적용시 Bubble Input 생성
- * 3.
- * */
-// 1. context done
-
-// 2. Switch doing
-
-// 3. Thumb X
-
 type SwitchContextValueT = {
   checked?: boolean;
   disabled: boolean;
 };
 
-const [SwitchProvider, useSwitchContext] = createContext<SwitchContextValueT>('SWITCH');
+const [SwitchProvider, useSwitchContext] = createContext<SwitchContextValueT>('SWITCH_PROVIDER');
 
 type ButtonProps = React.ComponentPropsWithoutRef<typeof Primitive.button>;
 type SwitchProps = ButtonProps & {
@@ -34,7 +22,7 @@ type SwitchProps = ButtonProps & {
   isFormControl?: boolean;
 };
 
-export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>, SwitchProps>(
+const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, SwitchProps>(
   (
     {
       checked,
@@ -56,7 +44,7 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
       defaultValue: defaultChecked,
       onChange: onChangeSwitch,
     });
-    console.log(controlledChecked);
+
     return (
       <SwitchProvider value={{ checked: controlledChecked, disabled }}>
         <Primitive.button
@@ -85,6 +73,8 @@ export const Switch = React.forwardRef<React.ElementRef<typeof Primitive.button>
     );
   },
 );
+
+SwitchRoot.displayName = 'SWITCH_ROOT';
 
 type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & {
   isBubbleChange: boolean;
@@ -120,11 +110,14 @@ const FakeInput = (props: FakeInputProps) => {
 };
 
 type SwitchThumbProps = React.ComponentPropsWithoutRef<typeof Primitive.span>;
-export const SwitchThumb = (props: SwitchThumbProps) => {
+const SwitchThumb = (props: SwitchThumbProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { checked } = useSwitchContext('SWITCH_THUMB');
 
   return <Primitive.span {...props} />;
 };
 
-Switch.displayName = 'SWITCH';
+export const Switch = {
+  Root: SwitchRoot,
+  Thumb: SwitchThumb,
+};

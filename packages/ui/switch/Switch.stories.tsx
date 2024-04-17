@@ -1,4 +1,4 @@
-import { Switch, SwitchThumb } from './index';
+import { Switch } from './switch';
 import { useState } from 'react';
 export default {
   title: 'Design System/Switch',
@@ -12,14 +12,10 @@ export const Story = () => {
     <form
       onSubmit={e => {
         e.preventDefault();
-        // console.log(e);
-      }}
-      onClick={e => {
-        console.log(e);
       }}
       style={{ backgroundColor: 'red' }}
     >
-      <Switch
+      <Switch.Root
         checked={switchState}
         name="dott"
         onChangeSwitch={() => setSwitchState(prev => !prev)}
@@ -35,7 +31,7 @@ export const Story = () => {
           background: switchState ? 'coral' : 'lightGray',
         }}
       >
-        <SwitchThumb
+        <Switch.Thumb
           style={{
             display: 'block',
             width: '20px',
@@ -44,7 +40,7 @@ export const Story = () => {
             borderRadius: '50%',
           }}
         />
-      </Switch>
+      </Switch.Root>
     </form>
   );
 };
