@@ -1,5 +1,7 @@
 {
   "name": "@dtwo/use-compose-refs",
+  "index": "index.tsx",
+
   "version": "0.0.0",
   "private": true,
   "scripts": {

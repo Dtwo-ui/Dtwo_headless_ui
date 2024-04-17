@@ -1,6 +1,7 @@
 {
   "name": "@dtwo/switch",
   "version": "0.0.0",
+  "index": "index.ts",
   "scripts": {
     "test": "vitest",
     "test:watch": "vitest run --watch",
