@@ -12,12 +12,14 @@ export const Story = () => {
     <form
       onSubmit={e => {
         e.preventDefault();
+        console.log('서브밋 발생');
       }}
       style={{ backgroundColor: 'red' }}
     >
       <Switch.Root
-        checked={switchState}
+        // checked={switchState}
         name="dott"
+        required={false}
         onChangeSwitch={() => setSwitchState(prev => !prev)}
         style={{
           display: 'flex',
@@ -40,6 +42,7 @@ export const Story = () => {
             borderRadius: '50%',
           }}
         />
+        <button type={'submit'}></button>
       </Switch.Root>
     </form>
   );

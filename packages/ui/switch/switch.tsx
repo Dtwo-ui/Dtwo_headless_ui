@@ -30,7 +30,7 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
       defaultChecked = false,
       onChangeSwitch,
       isFormControl = true,
-      required,
+      required = false,
       ...props
     }: SwitchProps,
     forwardRef,
@@ -67,6 +67,7 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
             name={props.name}
             aria-hidden={true}
             tabIndex={-1}
+            required={required}
           />
         )}
       </SwitchProvider>
@@ -98,7 +99,7 @@ const FakeInput = (props: FakeInputProps) => {
       input.dispatchEvent(fakeClickEvent);
     }
   }, [isBubbleChange]);
-
+  console.log(props.required);
   return (
     <input
       type="checkbox"
