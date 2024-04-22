@@ -37,7 +37,6 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
   ) => {
     const buttonRef = React.useRef<HTMLButtonElement | null>(null);
     const ref = useComposeRefs(forwardRef, buttonRef);
-    const bubbleInputChange = React.useRef(false);
 
     const [controlledChecked, setControlledChecked] = useControllableState({
       value: checked,
@@ -56,14 +55,12 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
           onClick={composeEventHandler(props.onClick, e => {
             e.stopPropagation();
             setControlledChecked(prevState => !prevState);
-            bubbleInputChange.current = !bubbleInputChange.current;
           })}
           disabled={disabled}
           data-state={controlledChecked}
         />
         {isFormControl && (
           <FakeInput
-            isBubbleChange={bubbleInputChange.current}
             checked={controlledChecked}
             name={props.name}
             aria-hidden={true}
@@ -78,10 +75,8 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
 
 SwitchRoot.displayName = 'SWITCH_ROOT';
 
-type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & {
-  isBubbleChange: boolean;
-};
-const FakeInput = ({ isBubbleChange, ...props }: FakeInputProps) => {
+type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & {};
+const FakeInput = ({ ...props }: FakeInputProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -93,12 +88,12 @@ const FakeInput = ({ isBubbleChange, ...props }: FakeInputProps) => {
     )!.set;
 
     if (inputCheckedSetter) {
-      inputCheckedSetter.call(input, isBubbleChange);
+      inputCheckedSetter.call(input, props.checked);
 
       const fakeClickEvent = new Event('click', { bubbles: true });
       input.dispatchEvent(fakeClickEvent);
     }
-  }, [isBubbleChange]);
+  }, [props.checked]);
   return (
     <input
       type="checkbox"
