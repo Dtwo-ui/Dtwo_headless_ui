@@ -57,6 +57,6 @@
     "react-dom": "^18.2.0"
   },
   "eslintIgnore": [
-    "vite.config.js"
+    "vite.config.mjs"
   ]
 }
