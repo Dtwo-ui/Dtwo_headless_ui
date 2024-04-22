@@ -99,7 +99,6 @@ const FakeInput = ({ isBubbleChange, ...props }: FakeInputProps) => {
       input.dispatchEvent(fakeClickEvent);
     }
   }, [isBubbleChange]);
-  console.log(props.required);
   return (
     <input
       type="checkbox"

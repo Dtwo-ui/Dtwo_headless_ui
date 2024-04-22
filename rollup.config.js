@@ -12,6 +12,7 @@ function readWorkspacePackageJson() {
     const workspacePackageJsonContent = readFileSync(workspacePackageJsonPath, 'utf8');
     return JSON.parse(workspacePackageJsonContent);
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Failed to read workspace package.json:', error);
     return null;
   }

@@ -12,7 +12,6 @@ export const Story = () => {
     <form
       onSubmit={e => {
         e.preventDefault();
-        console.log('서브밋 발생');
       }}
       style={{ backgroundColor: 'red' }}
     >
