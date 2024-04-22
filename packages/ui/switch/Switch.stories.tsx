@@ -16,6 +16,9 @@ export const Story = () => {
       onChange={() => {
         console.log('변경이 되야하는데');
       }}
+      onClick={() => {
+        console.log('클릭이벤트 발생');
+      }}
       style={{ backgroundColor: 'red' }}
     >
       <Switch.Root

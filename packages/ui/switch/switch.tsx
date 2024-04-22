@@ -3,7 +3,7 @@ import { Primitive } from '@dtwo/primitive';
 import { useComposeRefs } from '@dtwo/use-compose-refs';
 import { useControllableState } from '@dtwo/use-controllable-state';
 import { composeEventHandler } from '@dtwo/utils';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 type SwitchContextValueT = {
   checked?: boolean;
@@ -78,9 +78,8 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
 SwitchRoot.displayName = 'SWITCH_ROOT';
 
 type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & {};
-const FakeInput = (props: FakeInputProps) => {
+const FakeInput = ({ checked, ...props }: FakeInputProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-
   useEffect(() => {
     const input = inputRef.current as HTMLInputElement;
 
@@ -89,18 +88,22 @@ const FakeInput = (props: FakeInputProps) => {
       'checked',
     )!.set;
 
+    /**
+     * TODO: 최초 렌더링시 click 이벤트 발생함 이부분만 해결하면 끝
+     */
     if (inputCheckedSetter) {
-      // !props.checked로 하면 변경이 감지 되긴함 뭔가 이전 체크 유무 관련 에러로 의심됨
-      inputCheckedSetter.call(input, props.checked);
+      inputCheckedSetter.call(input, checked);
 
       const fakeClickEvent = new Event('click', { bubbles: true });
       input.dispatchEvent(fakeClickEvent);
     }
-  }, [props.checked]);
+  }, [checked]);
+
   return (
     <input
       type="checkbox"
       ref={inputRef}
+      defaultChecked={checked}
       {...props}
       style={{ position: 'absolute', pointerEvents: 'none', opacity: 0, margin: 0 }}
     />
