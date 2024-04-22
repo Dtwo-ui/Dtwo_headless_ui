@@ -3,6 +3,7 @@ import { Switch } from './switch';
 import { act, render, screen } from '@testing-library/react';
 
 import { Primitive } from '@dtwo/primitive';
+import userEvent from '@testing-library/user-event';
 
 // TODO: act를 userEvent로 변경
 
@@ -59,29 +60,28 @@ describe('Switch basic capabilities', () => {
   });
 
   describe('Form submission', () => {
-    it('should not submit when Switch is required but unchecked', () => {
+    it('should not submit when Switch is required but unchecked', async () => {
       const mockSubmitEventHandler = vi.fn(() => {});
+      const user = userEvent.setup();
 
       render(
         <form onSubmit={mockSubmitEventHandler}>
           <Switch.Root required checked={false} />
-          <button type="submit" />
+          <button type="submit" aria-label="submitButton" />
         </form>,
       );
 
-      const switchRoot = screen.getByRole('button');
-      act(() => switchRoot.click());
-
+      const submitButton = screen.getByRole('button', { name: 'submitButton' });
+      await user.click(submitButton);
       expect(mockSubmitEventHandler).not.toHaveBeenCalled();
     });
 
     /**
      * TODO: 테스트 submit 이벤트 발생안되는 버그 발생 고쳐야함
      * */
-    it('should submit when Switch is required and checked', () => {
-      const mockSubmitEventHandler = vi.fn(() => {
-        console.log('서브밋');
-      });
+    it('should submit when Switch is required and checked', async () => {
+      const mockSubmitEventHandler = vi.fn(() => {});
+      const user = userEvent.setup();
 
       render(
         <form onSubmit={mockSubmitEventHandler}>
@@ -90,9 +90,12 @@ describe('Switch basic capabilities', () => {
         </form>,
       );
 
-      const switchRoot = screen.getByRole('button', { name: 'submit Button' });
+      const switchButton = screen.getByRole('switch');
+      await user.click(switchButton);
 
-      act(() => switchRoot.click());
+      const submitButton = screen.getByRole('button', { name: 'submit Button' });
+      await user.click(submitButton);
+
       expect(mockSubmitEventHandler).toHaveBeenCalled();
     });
   });

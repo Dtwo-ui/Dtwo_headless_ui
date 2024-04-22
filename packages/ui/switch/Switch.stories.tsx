@@ -19,7 +19,8 @@ export const Story = () => {
       <Switch.Root
         // checked={switchState}
         name="dott"
-        required={false}
+        required
+        checked
         onChangeSwitch={() => setSwitchState(prev => !prev)}
         style={{
           display: 'flex',
@@ -42,8 +43,8 @@ export const Story = () => {
             borderRadius: '50%',
           }}
         />
-        <button type={'submit'}></button>
       </Switch.Root>
+      <button type={'submit'}>서브밋</button>
     </form>
   );
 };

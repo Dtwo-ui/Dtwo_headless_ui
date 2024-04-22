@@ -64,6 +64,7 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
         {isFormControl && (
           <FakeInput
             isBubbleChange={bubbleInputChange.current}
+            checked={controlledChecked}
             name={props.name}
             aria-hidden={true}
             tabIndex={-1}
@@ -80,8 +81,7 @@ SwitchRoot.displayName = 'SWITCH_ROOT';
 type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & {
   isBubbleChange: boolean;
 };
-const FakeInput = (props: FakeInputProps) => {
-  const { isBubbleChange } = props;
+const FakeInput = ({ isBubbleChange, ...props }: FakeInputProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
