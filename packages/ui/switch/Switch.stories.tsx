@@ -7,31 +7,33 @@ export default {
 };
 
 export const Story = () => {
-  const [switchState, setSwitchState] = useState(false);
-
+  // const [switchState, setSwitchState] = useState(false);
   return (
     <form
       onSubmit={e => {
         e.preventDefault();
+      }}
+      onChange={() => {
+        console.log('변경이 되야하는데');
       }}
       style={{ backgroundColor: 'red' }}
     >
       <Switch.Root
         // checked={switchState}
         name="dott"
-        required
-        checked
-        onChangeSwitch={() => setSwitchState(prev => !prev)}
+        // required
+        // checked
+        // onChange={() => setSwitchState(prev => !prev)}
         style={{
           display: 'flex',
           width: '60px',
           padding: '6px',
           borderRadius: '9999px',
           border: 'none',
-          justifyContent: switchState
-            ? 'end'
-            : 'start' /* control만 스타일 적용 -> unControl은 추후 처리 */,
-          background: switchState ? 'coral' : 'lightGray',
+          // justifyContent: switchState
+          //   ? 'end'
+          //   : 'start' /* control만 스타일 적용 -> unControl은 추후 처리 */,
+          // background: switchState ? 'coral' : 'lightGray',
         }}
       >
         <Switch.Thumb

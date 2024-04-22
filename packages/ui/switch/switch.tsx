@@ -63,7 +63,6 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
         />
         {isFormControl && (
           <FakeInput
-            isBubbleChange={bubbleInputChange.current}
             checked={controlledChecked}
             name={props.name}
             aria-hidden={true}
@@ -78,10 +77,8 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
 
 SwitchRoot.displayName = 'SWITCH_ROOT';
 
-type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & {
-  isBubbleChange: boolean;
-};
-const FakeInput = ({ isBubbleChange, ...props }: FakeInputProps) => {
+type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & {};
+const FakeInput = (props: FakeInputProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -93,12 +90,13 @@ const FakeInput = ({ isBubbleChange, ...props }: FakeInputProps) => {
     )!.set;
 
     if (inputCheckedSetter) {
-      inputCheckedSetter.call(input, isBubbleChange);
+      // !props.checked로 하면 변경이 감지 되긴함 뭔가 이전 체크 유무 관련 에러로 의심됨
+      inputCheckedSetter.call(input, props.checked);
 
       const fakeClickEvent = new Event('click', { bubbles: true });
       input.dispatchEvent(fakeClickEvent);
     }
-  }, [isBubbleChange]);
+  }, [props.checked]);
   return (
     <input
       type="checkbox"
