@@ -37,7 +37,6 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
   ) => {
     const buttonRef = React.useRef<HTMLButtonElement | null>(null);
     const ref = useComposeRefs(forwardRef, buttonRef);
-    const bubbleInputChange = React.useRef(false);
 
     const [controlledChecked, setControlledChecked] = useControllableState({
       value: checked,
@@ -56,7 +55,6 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
           onClick={composeEventHandler(props.onClick, e => {
             e.stopPropagation();
             setControlledChecked(prevState => !prevState);
-            bubbleInputChange.current = !bubbleInputChange.current;
           })}
           disabled={disabled}
           data-state={controlledChecked}
