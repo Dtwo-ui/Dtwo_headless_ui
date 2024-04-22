@@ -1,5 +1,6 @@
-import { Switch } from './switch';
 import { useState } from 'react';
+
+import { Switch } from './switch';
 export default {
   title: 'Design System/Switch',
   component: Switch,

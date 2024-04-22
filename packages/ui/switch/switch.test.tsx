@@ -1,9 +1,9 @@
-import { Switch } from './switch';
-
-import { act, render, screen } from '@testing-library/react';
 
 import { Primitive } from '@dtwo/primitive';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import { Switch } from './switch';
 
 // TODO: act를 userEvent로 변경
 

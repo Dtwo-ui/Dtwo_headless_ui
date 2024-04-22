@@ -1,10 +1,11 @@
-import typescript from 'rollup-plugin-typescript2';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import rollupPluginPeerDepsExternalModule from 'rollup-plugin-peer-deps-external';
-import process from 'process';
-import path, { resolve } from 'path';
+import typescript from 'rollup-plugin-typescript2';
+
 import { readFileSync } from 'fs';
+import path, { resolve } from 'path';
+import process from 'process';
 
 function readWorkspacePackageJson() {
   const workspacePackageJsonPath = resolve(process.cwd(), 'package.json');

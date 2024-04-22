@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { Primitive } from '@dtwo/primitive';
 import { createContext } from '@dtwo/context';
-import { useControllableState } from '@dtwo/use-controllable-state';
+import { Primitive } from '@dtwo/primitive';
 import { useComposeRefs } from '@dtwo/use-compose-refs';
+import { useControllableState } from '@dtwo/use-controllable-state';
 import { composeEventHandler } from '@dtwo/utils';
+import React, { useEffect } from 'react';
 
 type SwitchContextValueT = {
   checked?: boolean;
