@@ -1,7 +1,7 @@
-
 import { Primitive } from '@dtwo/primitive';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe } from 'vitest';
 
 import { Switch } from './switch';
 
@@ -20,6 +20,7 @@ describe('Switch basic capabilities', () => {
     const SwitchRoot = screen.getByRole('switch');
 
     act(() => SwitchRoot.click());
+
     expect(SwitchRoot).toBeChecked();
 
     act(() => SwitchRoot.click());
@@ -98,5 +99,43 @@ describe('Switch basic capabilities', () => {
 
       expect(mockSubmitEventHandler).toHaveBeenCalled();
     });
+  });
+});
+
+describe('스위치 키보드 액션', () => {
+  beforeEach(async () => {
+    const user = userEvent.setup();
+    // eslint-disable-next-line testing-library/no-render-in-lifecycle
+    render(<Switch.Root />);
+    await user.tab();
+  });
+  it('tab 키 입력시 switch에 hover된다.', async () => {
+    const switchRoot = screen.getByRole('switch');
+
+    expect(switchRoot).toHaveFocus();
+  });
+
+  it('spacebar keydown 발생시 스위치의 check 상태가 변화한다.', async () => {
+    const user = userEvent.setup();
+
+    await user.keyboard('space');
+
+    screen.debug();
+
+    const switchRoot = screen.getByRole('switch');
+
+    expect(switchRoot).toBeChecked();
+  });
+
+  it('enter keydown 발생시 스위치의 check 상태가 변화한다.', async () => {
+    const user = userEvent.setup();
+
+    await user.keyboard('enter');
+
+    screen.debug();
+
+    const switchRoot = screen.getByRole('switch');
+
+    expect(switchRoot).toBeChecked();
   });
 });
