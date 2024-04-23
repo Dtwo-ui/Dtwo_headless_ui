@@ -3,7 +3,7 @@ import { Primitive } from '@dtwo/primitive';
 import { useComposeRefs } from '@dtwo/use-compose-refs';
 import { useControllableState } from '@dtwo/use-controllable-state';
 import { composeEventHandler } from '@dtwo/utils';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 type SwitchContextValueT = {
   checked?: boolean;
@@ -75,10 +75,11 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
 
 SwitchRoot.displayName = 'SWITCH_ROOT';
 
-type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & {};
+type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & object;
 const FakeInput = ({ checked, ...props }: FakeInputProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  useEffect(() => {
+
+  React.useEffect(() => {
     const input = inputRef.current as HTMLInputElement;
 
     const inputCheckedSetter = Object.getOwnPropertyDescriptor(
@@ -102,19 +103,25 @@ const FakeInput = ({ checked, ...props }: FakeInputProps) => {
       type="checkbox"
       ref={inputRef}
       defaultChecked={checked}
-      {...props}
       style={{ position: 'absolute', pointerEvents: 'none', opacity: 0, margin: 0 }}
+      {...props}
     />
   );
 };
 
 type SwitchThumbProps = React.ComponentPropsWithoutRef<typeof Primitive.span>;
-const SwitchThumb = (props: SwitchThumbProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { checked } = useSwitchContext('SWITCH_THUMB');
 
-  return <Primitive.span {...props} />;
-};
+const SwitchThumb = React.forwardRef<React.ElementRef<typeof Primitive.span>, SwitchThumbProps>(
+  (props: SwitchThumbProps, forwardRef) => {
+    const { checked, disabled } = useSwitchContext('SWITCH_THUMB');
+
+    return (
+      <Primitive.span data-state={checked} data-disabled={disabled} ref={forwardRef} {...props} />
+    );
+  },
+);
+
+SwitchThumb.displayName = 'SWITCH_THUMB';
 
 export const Switch = {
   Root: SwitchRoot,
