@@ -1,7 +1,9 @@
-
+/* eslint-disable jest-dom/prefer-required */
+/* eslint-disable jest-dom/prefer-checked */
 import { Primitive } from '@dtwo/primitive';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { useState } from 'react';
 
 import { Switch } from './switch';
 
@@ -97,6 +99,50 @@ describe('Switch basic capabilities', () => {
       await user.click(submitButton);
 
       expect(mockSubmitEventHandler).toHaveBeenCalled();
+    });
+  });
+
+  describe('WAI-ARIA test', () => {
+    it('aria-clicked', () => {
+      render(<Switch.Root />);
+      const SwitchRoot = screen.getByRole('switch');
+
+      act(() => SwitchRoot.click());
+      expect(SwitchRoot).toHaveAttribute('aria-checked', 'true');
+
+      act(() => SwitchRoot.click());
+      expect(SwitchRoot).toHaveAttribute('aria-checked', 'false');
+    });
+
+    it('aria-required', () => {
+      render(<Switch.Root required />);
+      const SwitchRoot = screen.getByRole('switch');
+
+      expect(SwitchRoot).toHaveAttribute('aria-required', 'true');
+    });
+
+    it('fakeInput is hidden', async () => {
+      const SwitchComponent = () => {
+        const [checked, setChecked] = useState(false);
+        return <Switch.Root checked={checked} onChangeSwitch={() => setChecked(prev => !prev)} />;
+      };
+
+      render(
+        <form>
+          <SwitchComponent />
+        </form>,
+      );
+
+      const SwitchRoot = screen.getByRole('switch');
+      const FakeInput = await screen.findByRole('checkbox', { hidden: true });
+
+      expect(FakeInput).toBeInTheDocument();
+      expect(FakeInput).not.toBeVisible();
+
+      act(() => SwitchRoot.click());
+
+      expect(FakeInput).toBeInTheDocument();
+      expect(FakeInput).not.toBeVisible();
     });
   });
 });
