@@ -164,9 +164,7 @@ describe('스위치 키보드 액션', () => {
   it('spacebar keydown 발생시 스위치의 check 상태가 변화한다.', async () => {
     const user = userEvent.setup();
 
-    await user.keyboard('space');
-
-    screen.debug();
+    await user.keyboard('[space]');
 
     const switchRoot = screen.getByRole('switch');
 
@@ -176,9 +174,7 @@ describe('스위치 키보드 액션', () => {
   it('enter keydown 발생시 스위치의 check 상태가 변화한다.', async () => {
     const user = userEvent.setup();
 
-    await user.keyboard('enter');
-
-    screen.debug();
+    await user.keyboard('[enter]');
 
     const switchRoot = screen.getByRole('switch');
 
