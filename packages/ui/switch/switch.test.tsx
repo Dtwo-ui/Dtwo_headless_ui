@@ -22,7 +22,6 @@ describe('Switch basic capabilities', () => {
     const SwitchRoot = screen.getByRole('switch');
 
     act(() => SwitchRoot.click());
-
     expect(SwitchRoot).toBeChecked();
 
     act(() => SwitchRoot.click());
@@ -133,7 +132,6 @@ describe('Switch basic capabilities', () => {
           <SwitchComponent />
         </form>,
       );
-
       const SwitchRoot = screen.getByRole('switch');
       const FakeInput = await screen.findByRole('checkbox', { hidden: true });
 
@@ -179,5 +177,41 @@ describe('스위치 키보드 액션', () => {
     const switchRoot = screen.getByRole('switch');
 
     expect(switchRoot).toBeChecked();
+  });
+});
+
+describe('controlled/Uncontrolled 상태제어', () => {
+  it('unControlled 컴포넌트 상태 제어', () => {
+    render(<Switch.Root />);
+    const SwitchRoot = screen.getByRole('switch');
+
+    act(() => SwitchRoot.click());
+    expect(SwitchRoot).toBeChecked();
+    expect(SwitchRoot).toHaveAttribute('data-state', 'true');
+
+    act(() => SwitchRoot.click());
+    expect(SwitchRoot).not.toBeChecked();
+    expect(SwitchRoot).toHaveAttribute('data-state', 'false');
+
+    //data attirbute
+  });
+
+  it('controlled 컴포넌트 상태 제어', () => {
+    const SwitchComponent = () => {
+      const [checked, setChecked] = useState(false);
+      return <Switch.Root checked={checked} onChangeSwitch={() => setChecked(prev => !prev)} />;
+    };
+
+    render(<SwitchComponent />);
+
+    const SwitchRoot = screen.getByRole('switch');
+
+    act(() => SwitchRoot.click());
+    expect(SwitchRoot).toBeChecked();
+    expect(SwitchRoot).toHaveAttribute('data-state', 'true');
+
+    act(() => SwitchRoot.click());
+    expect(SwitchRoot).not.toBeChecked();
+    expect(SwitchRoot).toHaveAttribute('data-state', 'false');
   });
 });
