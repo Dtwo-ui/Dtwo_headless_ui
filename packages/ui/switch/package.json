@@ -1,12 +1,12 @@
 {
   "name": "@dtwo/switch",
   "version": "0.0.0",
-  "private": true,
+  "index": "index.ts",
   "scripts": {
     "test": "vitest",
     "test:watch": "vitest run --watch",
-    "build": "rollup -c ../../rollup.config.js --bundleConfigAsCjs",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
+    "clean": "rm -rf dist"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -16,6 +16,11 @@
   },
   "devDependencies": {
     "@dtwo/eslint-config": "workspace:*",
-    "@dtwo/ts-config": "workspace:*"
+    "@dtwo/ts-config": "workspace:*",
+    "@dtwo/primitive": "workspace:*",
+    "@dtwo/context": "workspace:*",
+    "@dtwo/use-controllable-state": "workspace:*",
+    "@dtwo/use-compose-refs": "workspace:*",
+    "@dtwo/utils": "workspace:*"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "name": "@dtwo/primitive",
+  "index": "index.tsx",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@types/react": "*",
+    "@types/react-dom": "*"
+  },
+  "devDependencies": {
+    "@dtwo/eslint-config": "workspace:*",
+    "@dtwo/ts-config": "workspace:*"
+  }
+}

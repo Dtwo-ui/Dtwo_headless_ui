@@ -1,0 +1,4 @@
+{
+  "extends": "@dtwo/ts-config/ui.json",
+  "include": ["**/*.tsx", "**/*.ts"]
+}

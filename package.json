@@ -29,6 +29,7 @@
     "@storybook/test": "^7.6.17",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.11.25",
     "@types/react": "^18.2.62",
     "@types/react-dom": "^18.2.19",
@@ -41,6 +42,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^7.6.17",
+    "tslib": "^2.6.2",
     "turbo": "latest",
     "typescript": "^5.3.3",
     "vite": "^5.1.5",
@@ -55,6 +57,6 @@
     "react-dom": "^18.2.0"
   },
   "eslintIgnore": [
-    "vite.config.js"
+    "vite.config.mjs"
   ]
 }

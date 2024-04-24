@@ -19,6 +19,9 @@ module.exports = {
     'plugin:storybook/recommended',
   ],
   settings: {
+    react: {
+      version: 'detect',
+    },
     'import/resolver': {
       typescript: {},
     },
@@ -29,6 +32,9 @@ module.exports = {
     sourceType: 'module',
     project: tsconfigPath,
     tsconfigRootDir: __dirname,
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: [
     '@typescript-eslint',
@@ -40,6 +46,36 @@ module.exports = {
     'jest-dom',
   ],
   rules: {
+    'react/self-closing-comp': [
+      'error',
+      {
+        component: true,
+        html: true,
+      },
+    ],
+
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+
+    'import/order': [
+      'error',
+      {
+        groups: ['external', 'internal', 'type', ['sibling', 'parent'], 'index'],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+        ],
+        alphabetize: {
+          order: 'asc' /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
+          caseInsensitive: true /* ignore case. Options: [true, false] */,
+        },
+        'newlines-between': 'always',
+      },
+    ],
+
     'react/react-in-jsx-scope': 'off',
     'no-console': 'warn',
   },

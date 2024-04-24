@@ -1,0 +1,1 @@
+export { composeEventHandler } from './composeEventHandler';
