@@ -25,4 +25,9 @@ export const styledSwitchThumb = style({
   height: '20px',
   backgroundColor: 'white',
   borderRadius: '50%',
+  selectors: {
+    '&[data-state="true"]': {
+      transform: 'translate(0, 0)',
+    },
+  },
 });
