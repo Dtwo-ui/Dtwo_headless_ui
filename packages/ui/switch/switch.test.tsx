@@ -1,13 +1,12 @@
-import { Primitive } from '@dtwo/primitive';
 /* eslint-disable jest-dom/prefer-required */
 /* eslint-disable jest-dom/prefer-checked */
-import { act, render, screen } from '@testing-library/react';
+
+import { Primitive } from '@dtwo/primitive';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 
 import { Switch } from './switch';
-
-// TODO: act를 userEvent로 변경
 
 describe('Switch basic capabilities', () => {
   it('renders the Switch component', () => {
@@ -17,31 +16,34 @@ describe('Switch basic capabilities', () => {
     expect(switchRoot).toBeInTheDocument();
   });
 
-  it('switch change checked when clicked', () => {
+  it('switch change checked when clicked', async () => {
+    const user = userEvent.setup();
     render(<Switch.Root />);
     const SwitchRoot = screen.getByRole('switch');
 
-    act(() => SwitchRoot.click());
+    await user.click(SwitchRoot);
     expect(SwitchRoot).toBeChecked();
 
-    act(() => SwitchRoot.click());
+    await user.click(SwitchRoot);
     expect(SwitchRoot).not.toBeChecked();
   });
 
-  it('switch can be disabled', () => {
+  it('switch can be disabled', async () => {
     render(<Switch.Root disabled />);
     const SwitchRoot = screen.getByRole('switch');
 
     expect(SwitchRoot).toBeDisabled();
   });
 
-  it("when switch disabled, it can't be click", () => {
+  it("when switch disabled, it can't be click", async () => {
+    const user = userEvent.setup();
+
     const mockClickHandler = vi.fn();
 
     render(<Switch.Root disabled onClick={mockClickHandler} />);
     const SwitchRoot = screen.getByRole('switch');
 
-    act(() => SwitchRoot.click());
+    await user.click(SwitchRoot);
     expect(SwitchRoot).not.toBeChecked();
 
     expect(mockClickHandler).not.toHaveBeenCalled();
@@ -82,7 +84,9 @@ describe('Switch basic capabilities', () => {
      * TODO: 테스트 submit 이벤트 발생안되는 버그 발생 고쳐야함
      * */
     it('should submit when Switch is required and checked', async () => {
-      const mockSubmitEventHandler = vi.fn(() => {});
+      const mockSubmitEventHandler = vi.fn(event => {
+        event.preventDefault();
+      });
       const user = userEvent.setup();
 
       render(
@@ -99,49 +103,6 @@ describe('Switch basic capabilities', () => {
       await user.click(submitButton);
 
       expect(mockSubmitEventHandler).toHaveBeenCalled();
-    });
-  });
-
-  describe('WAI-ARIA test', () => {
-    it('aria-clicked', () => {
-      render(<Switch.Root />);
-      const SwitchRoot = screen.getByRole('switch');
-
-      act(() => SwitchRoot.click());
-      expect(SwitchRoot).toHaveAttribute('aria-checked', 'true');
-
-      act(() => SwitchRoot.click());
-      expect(SwitchRoot).toHaveAttribute('aria-checked', 'false');
-    });
-
-    it('aria-required', () => {
-      render(<Switch.Root required />);
-      const SwitchRoot = screen.getByRole('switch');
-
-      expect(SwitchRoot).toHaveAttribute('aria-required', 'true');
-    });
-
-    it('fakeInput is hidden', async () => {
-      const SwitchComponent = () => {
-        const [checked, setChecked] = useState(false);
-        return <Switch.Root checked={checked} onChangeSwitch={() => setChecked(prev => !prev)} />;
-      };
-
-      render(
-        <form>
-          <SwitchComponent />
-        </form>,
-      );
-      const SwitchRoot = screen.getByRole('switch');
-      const FakeInput = await screen.findByRole('checkbox', { hidden: true });
-
-      expect(FakeInput).toBeInTheDocument();
-      expect(FakeInput).not.toBeVisible();
-
-      act(() => SwitchRoot.click());
-
-      expect(FakeInput).toBeInTheDocument();
-      expect(FakeInput).not.toBeVisible();
     });
   });
 });
@@ -181,22 +142,22 @@ describe('스위치 키보드 액션', () => {
 });
 
 describe('controlled/Uncontrolled 상태제어', () => {
-  it('unControlled 컴포넌트 상태 제어', () => {
+  it('unControlled 컴포넌트 상태 제어', async () => {
+    const user = userEvent.setup();
     render(<Switch.Root />);
     const SwitchRoot = screen.getByRole('switch');
 
-    act(() => SwitchRoot.click());
+    await user.click(SwitchRoot);
     expect(SwitchRoot).toBeChecked();
     expect(SwitchRoot).toHaveAttribute('data-state', 'true');
 
-    act(() => SwitchRoot.click());
+    await user.click(SwitchRoot);
     expect(SwitchRoot).not.toBeChecked();
     expect(SwitchRoot).toHaveAttribute('data-state', 'false');
-
-    //data attirbute
   });
 
-  it('controlled 컴포넌트 상태 제어', () => {
+  it('controlled 컴포넌트 상태 제어', async () => {
+    const user = userEvent.setup();
     const SwitchComponent = () => {
       const [checked, setChecked] = useState(false);
       return <Switch.Root checked={checked} onChangeSwitch={() => setChecked(prev => !prev)} />;
@@ -206,12 +167,65 @@ describe('controlled/Uncontrolled 상태제어', () => {
 
     const SwitchRoot = screen.getByRole('switch');
 
-    act(() => SwitchRoot.click());
+    await user.click(SwitchRoot);
     expect(SwitchRoot).toBeChecked();
     expect(SwitchRoot).toHaveAttribute('data-state', 'true');
 
-    act(() => SwitchRoot.click());
+    await user.click(SwitchRoot);
     expect(SwitchRoot).not.toBeChecked();
     expect(SwitchRoot).toHaveAttribute('data-state', 'false');
+  });
+});
+
+describe('WAI-ARIA test', () => {
+  it('aria-clicked', async () => {
+    const user = userEvent.setup();
+
+    render(<Switch.Root />);
+    const SwitchRoot = screen.getByRole('switch');
+
+    await user.click(SwitchRoot);
+    expect(SwitchRoot).toHaveAttribute('aria-checked', 'true');
+
+    await user.click(SwitchRoot);
+    expect(SwitchRoot).toHaveAttribute('aria-checked', 'false');
+  });
+
+  it('aria-required', () => {
+    render(<Switch.Root required />);
+    const SwitchRoot = screen.getByRole('switch');
+
+    expect(SwitchRoot).toHaveAttribute('aria-required', 'true');
+  });
+
+  it('fakeInput is hidden', async () => {
+    const user = userEvent.setup();
+
+    const SwitchComponent = () => {
+      const [checked, setChecked] = useState(false);
+      return <Switch.Root checked={checked} onChangeSwitch={() => setChecked(prev => !prev)} />;
+    };
+
+    render(
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+        }}
+      >
+        <SwitchComponent />
+      </form>,
+    );
+    const SwitchRoot = screen.getByRole('switch');
+    const FakeInput = await screen.findByRole('checkbox', { hidden: true });
+
+    await user.click(SwitchRoot);
+
+    expect(FakeInput).toBeInTheDocument();
+    expect(FakeInput).not.toBeVisible();
+
+    await user.click(SwitchRoot);
+
+    expect(FakeInput).toBeInTheDocument();
+    expect(FakeInput).not.toBeVisible();
   });
 });
