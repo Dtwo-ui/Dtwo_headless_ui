@@ -9,11 +9,12 @@ export const styledSwitchRoot = style({
   borderRadius: '9999px',
   border: 'none',
   selectors: {
-    '&:[data-state="true"]': {
-      color: '#3498db',
+    '&[data-state="true"]': {
+      backgroundColor: '#3498db',
+      justifyContent: 'flex-end',
     },
-    '&:[data-state="false"]': {
-      color: '#bdc3c7',
+    '&[data-state="false"]': {
+      backgroundColor: '#bdc3c7',
     },
   },
 });
