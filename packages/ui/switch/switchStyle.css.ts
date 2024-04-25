@@ -16,6 +16,9 @@ export const styledSwitchRoot = style({
     '&[data-state="false"]': {
       backgroundColor: '#bdc3c7',
     },
+    '&:disabled': {
+      opacity: '0.5',
+    },
   },
 });
 

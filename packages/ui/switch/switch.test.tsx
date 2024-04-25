@@ -80,9 +80,6 @@ describe('Switch basic capabilities', () => {
       expect(mockSubmitEventHandler).not.toHaveBeenCalled();
     });
 
-    /**
-     * TODO: 테스트 submit 이벤트 발생안되는 버그 발생 고쳐야함
-     * */
     it('should submit when Switch is required and checked', async () => {
       const mockSubmitEventHandler = vi.fn(event => {
         event.preventDefault();
