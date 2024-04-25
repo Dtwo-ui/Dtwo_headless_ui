@@ -17,7 +17,9 @@
     "moduleResolution": "node",
     "declaration": true,
     "declarationMap": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "lib": ["ESNext", "dom", "dom.iterable"],
+    "downlevelIteration": true
   },
   "exclude": ["node_modules", "vitest.workspace.ts", "**/dist/**/*"],
   "include": [".eslintrc.cjs", "rollup.config.js"]
