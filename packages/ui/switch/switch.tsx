@@ -48,7 +48,7 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
     return (
       <SwitchProvider value={{ checked: controlledChecked, disabled }}>
         <Primitive.button
-          {...props}
+          type="button"
           role="switch"
           aria-checked={controlledChecked}
           aria-required={required}
@@ -59,6 +59,7 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
           })}
           disabled={disabled}
           data-state={controlledChecked}
+          {...props}
         />
         {isFormControl && (
           <FakeInput
