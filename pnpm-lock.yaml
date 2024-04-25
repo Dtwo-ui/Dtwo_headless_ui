@@ -236,6 +236,9 @@ importers:
       '@dtwo/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
+      '@dtwo/use-previous':
+        specifier: workspace:*
+        version: link:../usePrevious
       '@dtwo/utils':
         specifier: workspace:*
         version: link:../utils
@@ -263,6 +266,28 @@ importers:
         version: link:../../config/ts-config
 
   packages/ui/use-controllable-state:
+    dependencies:
+      '@types/react':
+        specifier: '*'
+        version: 18.2.62
+      '@types/react-dom':
+        specifier: '*'
+        version: 18.2.19
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@dtwo/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@dtwo/ts-config':
+        specifier: workspace:*
+        version: link:../../config/ts-config
+
+  packages/ui/usePrevious:
     dependencies:
       '@types/react':
         specifier: '*'
