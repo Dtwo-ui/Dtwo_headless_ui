@@ -1,6 +1,6 @@
 {
   "name": "@d_two/use-previous",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "index": "index.tsx",
   "main": "dist/index.js",
   "scripts": {
