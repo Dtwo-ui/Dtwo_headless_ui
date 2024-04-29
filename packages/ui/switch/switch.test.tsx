@@ -4,9 +4,11 @@
 import { Primitive } from '@dtwo/primitive';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { CSSProperties, useState } from 'react';
+import { describe } from 'vitest';
 
 import { Switch } from './switch';
+import { testSwitchStyle, testSwitchStyleObj } from './switchStyle.css';
 
 describe('Switch basic capabilities', () => {
   it('renders the Switch component', () => {
@@ -226,3 +228,29 @@ describe('WAI-ARIA test', () => {
     expect(FakeInput).not.toBeVisible();
   });
 });
+
+describe('custom style', () => {
+  it('inline 스타일을 적용 할 수 있다.', () => {
+    const styleObj: CSSProperties = { backgroundColor: '#fff', width: '200px', height: '100px' };
+
+    render(<Switch.Root style={styleObj} />);
+    const SwitchButton = screen.getByRole('switch');
+
+    expect(SwitchButton).toHaveStyle({ 'background-color': '#fff' });
+  });
+
+  //TODO: vanilla extract 스타일 테스트 해야함
+
+  // it('zero-runtime css를 적용할 수 있다.', () => {
+  //   render(<Switch.Root className={testSwitchStyle} />);
+  //   const SwitchButton = screen.getByRole('switch');
+  //
+  //   expect(SwitchButton).toHaveStyle(testSwitchStyleObj);
+  // });
+});
+
+// render(<Switch.Root className={testSwitchStyle} />);
+// const SwitchButton = screen.getByRole('switch');
+// const computedStyle = window.getComputedStyle(SwitchButton);
+// console.log(computedStyle);
+// expect(computedStyle.color).toBe(testSwitchStyleObj.color);

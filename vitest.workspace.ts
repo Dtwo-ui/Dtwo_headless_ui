@@ -1,4 +1,5 @@
 import { defineWorkspace } from 'vitest/config';
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 export default defineWorkspace([
   'packages/*',
@@ -9,5 +10,6 @@ export default defineWorkspace([
       environment: 'jsdom',
       setupFiles: '../../setupTest.ts',
     },
+    plugins: [vanillaExtractPlugin()],
   },
 ]);

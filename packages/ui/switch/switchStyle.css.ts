@@ -1,6 +1,13 @@
 import { style } from '@vanilla-extract/css';
 
 export const storyContainer = style({ display: 'flex' });
+export const testSwitchStyleObj = {
+  color: 'rgb(255, 255, 255)',
+  width: '300px',
+  height: '200px',
+};
+
+export const testSwitchStyle = style(testSwitchStyleObj);
 
 export const styledSwitchRoot = style({
   display: 'flex',
