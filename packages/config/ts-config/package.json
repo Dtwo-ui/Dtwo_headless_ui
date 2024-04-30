@@ -1,6 +1,11 @@
 {
-  "name": "@dtwo/ts-config",
+  "name": "@d_two/ts-config",
   "version": "0.0.0",
-  "private": true,
-  "scripts": {}
+  "scripts": {
+    "clean": "rm -rf dist",
+    "deploy": "pnpm publish --access=public"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

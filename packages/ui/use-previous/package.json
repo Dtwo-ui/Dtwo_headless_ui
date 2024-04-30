@@ -5,7 +5,7 @@
   "scripts": {
     "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
     "clean": "rm -rf dist",
-    "deploy": "npm publish --access"
+    "deploy": "npm publish --access=public"
   },
   "peerDependencies": {
     "react": "^18.2.0",

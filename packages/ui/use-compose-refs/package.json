@@ -1,13 +1,15 @@
 {
-  "name": "@dtwo/use-compose-refs",
+  "name": "@d_two/use-compose-refs",
   "index": "index.tsx",
-
   "version": "0.0.0",
-  "private": true,
   "scripts": {
 
     "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "deploy": "pnpm publish --access=public"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -18,5 +20,9 @@
   "devDependencies": {
     "@dtwo/eslint-config": "workspace:*",
     "@dtwo/ts-config": "workspace:*"
-  }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md"]
 }

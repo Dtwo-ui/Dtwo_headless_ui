@@ -1,12 +1,16 @@
 {
-  "name": "@dtwo/switch",
+  "name": "@d_two/switch",
   "version": "0.0.0",
   "index": "index.ts",
   "scripts": {
     "test": "vitest",
     "test:watch": "vitest run --watch",
     "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "deploy": "pnpm publish --access=public"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -23,5 +27,9 @@
     "@dtwo/use-compose-refs": "workspace:*",
     "@dtwo/use-previous": "workspace:*",
     "@dtwo/utils": "workspace:*"
-  }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md"]
 }
