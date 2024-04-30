@@ -1,6 +1,6 @@
 {
-  "name": "dtwo-eslint-config",
-  "version": "0.0.0",
+  "name": "@d_two/eslint-config",
+  "version": "0.0.1",
   "files": [
     "base.cjs",
     "ui-config.cjs"
