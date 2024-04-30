@@ -1,8 +1,7 @@
 {
   "name": "@d_two/use-previous",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "index": "index.tsx",
-  "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
     "clean": "rm -rf dist",
@@ -22,14 +21,17 @@
     "Dott <hyeongman24@gmail.com> (https://github.com/godhyeongman)",
     "dobby <jm.dev.study@gmail.com> (https://github.com/JiminKim-dev)"
   ],
-  "exports": {
-  ".": {
-    "types": "./dist/index.d.ts"
-  }
-},
+
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "files": ["dist", "package.json", "README.md"]
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts"
 }
