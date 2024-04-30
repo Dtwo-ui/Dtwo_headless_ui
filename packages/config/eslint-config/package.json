@@ -1,12 +1,12 @@
 {
   "name": "@d_two/eslint-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": [
     "base.cjs",
     "ui-config.cjs"
   ],
   "description": "dtwo_ui's inner eslint config",
-  "devDependencies": {
+  "dependencies": {
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
