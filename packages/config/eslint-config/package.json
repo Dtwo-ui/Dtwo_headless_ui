@@ -1,11 +1,11 @@
 {
-  "name": "@dtwo/eslint-config",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@d_two/eslint-config",
+  "version": "0.0.4",
   "files": [
     "base.cjs",
     "ui-config.cjs"
   ],
+  "description": "dtwo_ui's inner eslint config",
   "devDependencies": {
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -17,5 +17,15 @@
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-testing-library": "^6.2.0",
     "typescript-eslint": "^7.1.0"
-  }
+  },
+
+  "contributors": [
+    "Dott <hyeongman24@gmail.com> (https://github.com/godhyeongman)",
+    "dobby <jm.dev.study@gmail.com> (https://github.com/JiminKim-dev)"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+  "access": "public"
+},
+  "keywords": ["eslint"]
 }

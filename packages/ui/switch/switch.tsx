@@ -2,6 +2,7 @@ import { createContext } from '@dtwo/context';
 import { Primitive } from '@dtwo/primitive';
 import { useComposeRefs } from '@dtwo/use-compose-refs';
 import { useControllableState } from '@dtwo/use-controllable-state';
+import { usePrevious } from '@dtwo/use-previous';
 import { composeEventHandler } from '@dtwo/utils';
 import React from 'react';
 
@@ -47,7 +48,7 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
     return (
       <SwitchProvider value={{ checked: controlledChecked, disabled }}>
         <Primitive.button
-          {...props}
+          type="button"
           role="switch"
           aria-checked={controlledChecked}
           aria-required={required}
@@ -58,6 +59,7 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
           })}
           disabled={disabled}
           data-state={controlledChecked}
+          {...props}
         />
         {isFormControl && (
           <FakeInput
@@ -75,28 +77,27 @@ const SwitchRoot = React.forwardRef<React.ElementRef<typeof Primitive.button>, S
 
 SwitchRoot.displayName = 'SWITCH_ROOT';
 
-type FakeInputProps = React.ComponentPropsWithoutRef<'input'> & object;
+type FakeInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, 'checked'> & {
+  checked: boolean;
+};
 const FakeInput = ({ checked, ...props }: FakeInputProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const prevChecked = usePrevious(checked);
 
   React.useEffect(() => {
     const input = inputRef.current as HTMLInputElement;
-
     const inputCheckedSetter = Object.getOwnPropertyDescriptor(
       HTMLInputElement.prototype,
       'checked',
     )!.set;
 
-    /**
-     * TODO: 최초 렌더링시 click 이벤트 발생함 이부분만 해결하면 끝
-     */
-    if (inputCheckedSetter) {
+    if (inputCheckedSetter && prevChecked !== checked) {
       inputCheckedSetter.call(input, checked);
 
       const fakeClickEvent = new Event('click', { bubbles: true });
       input.dispatchEvent(fakeClickEvent);
     }
-  }, [checked]);
+  }, [checked, prevChecked]);
 
   return (
     <input
