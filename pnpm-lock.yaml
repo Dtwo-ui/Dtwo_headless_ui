@@ -238,7 +238,7 @@ importers:
         version: link:../use-controllable-state
       '@dtwo/use-previous':
         specifier: workspace:*
-        version: link:../usePrevious
+        version: link:../use-previous
       '@dtwo/utils':
         specifier: workspace:*
         version: link:../utils

@@ -19,7 +19,11 @@
       "cache": false
     },
     "clean": {
+      "dependsOn": ["^clean"],
       "cache": false
+    },
+    "deploy": {
+      "dependsOn": ["^clean", "^build", "^deploy"]
     }
   }
 }
