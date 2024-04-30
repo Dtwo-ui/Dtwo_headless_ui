@@ -1,6 +1,6 @@
 {
   "name": "@d_two/use-previous",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "index": "index.tsx",
   "scripts": {
     "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
@@ -31,8 +31,8 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": ["dist", "README.md"]
 }
