@@ -18,10 +18,10 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@dtwo/eslint-config':
+      '@d_two/eslint-config':
         specifier: workspace:*
         version: link:packages/config/eslint-config
-      '@dtwo/ts-config':
+      '@d_two/ts-config':
         specifier: workspace:*
         version: link:packages/config/ts-config
       '@rollup/plugin-alias':
@@ -174,10 +174,10 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@dtwo/eslint-config':
+      '@d_two/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@dtwo/ts-config':
+      '@d_two/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
 
@@ -196,10 +196,10 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@dtwo/eslint-config':
+      '@d_two/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@dtwo/ts-config':
+      '@d_two/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
 
@@ -218,28 +218,28 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@dtwo/context':
+      '@d_two/context':
         specifier: workspace:*
         version: link:../context
-      '@dtwo/eslint-config':
+      '@d_two/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@dtwo/primitive':
+      '@d_two/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@dtwo/ts-config':
+      '@d_two/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
-      '@dtwo/use-compose-refs':
+      '@d_two/use-compose-refs':
         specifier: workspace:*
         version: link:../use-compose-refs
-      '@dtwo/use-controllable-state':
+      '@d_two/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@dtwo/use-previous':
+      '@d_two/use-previous':
         specifier: workspace:*
         version: link:../use-previous
-      '@dtwo/utils':
+      '@d_two/utils':
         specifier: workspace:*
         version: link:../utils
 
@@ -258,10 +258,10 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@dtwo/eslint-config':
+      '@d_two/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@dtwo/ts-config':
+      '@d_two/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
 
@@ -280,10 +280,10 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@dtwo/eslint-config':
+      '@d_two/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@dtwo/ts-config':
+      '@d_two/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
 
@@ -302,19 +302,19 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@dtwo/eslint-config':
+      '@d_two/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@dtwo/ts-config':
+      '@d_two/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
 
   packages/ui/utils:
     devDependencies:
-      '@dtwo/eslint-config':
+      '@d_two/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@dtwo/ts-config':
+      '@d_two/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
 

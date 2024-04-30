@@ -17,8 +17,8 @@
     "@types/react-dom": "*"
   },
   "devDependencies": {
-    "@dtwo/eslint-config": "workspace:*",
-    "@dtwo/ts-config": "workspace:*"
+    "@d_two/eslint-config": "workspace:*",
+    "@d_two/ts-config": "workspace:*"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

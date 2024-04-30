@@ -1,7 +1,7 @@
 /* eslint-disable jest-dom/prefer-required */
 /* eslint-disable jest-dom/prefer-checked */
 
-import { Primitive } from '@dtwo/primitive';
+import { Primitive } from '@d_two/primitive';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CSSProperties, useState } from 'react';

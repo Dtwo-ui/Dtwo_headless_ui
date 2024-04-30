@@ -1,1 +1,1 @@
-# `@dtwo/switch`
+# `@d_two/switch`

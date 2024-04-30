@@ -13,8 +13,8 @@
     "build-storybook": "storybook build"
   },
   "devDependencies": {
-    "@dtwo/eslint-config": "workspace:*",
-    "@dtwo/ts-config": "workspace:*",
+    "@d_two/eslint-config": "workspace:*",
+    "@d_two/ts-config": "workspace:*",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",

@@ -1,9 +1,9 @@
-import { createContext } from '@dtwo/context';
-import { Primitive } from '@dtwo/primitive';
-import { useComposeRefs } from '@dtwo/use-compose-refs';
-import { useControllableState } from '@dtwo/use-controllable-state';
-import { usePrevious } from '@dtwo/use-previous';
-import { composeEventHandler } from '@dtwo/utils';
+import { createContext } from '@d_two/context';
+import { Primitive } from '@d_two/primitive';
+import { useComposeRefs } from '@d_two/use-compose-refs';
+import { useControllableState } from '@d_two/use-controllable-state';
+import { usePrevious } from '@d_two/use-previous';
+import { composeEventHandler } from '@d_two/utils';
 import React from 'react';
 
 type SwitchContextValueT = {

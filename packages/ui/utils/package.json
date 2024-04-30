@@ -1,10 +1,10 @@
 {
-  "name": "@dtwo/utils",
+  "name": "@d_two/utils",
   "version": "0.0.0",
   "private": true,
   "scripts": {},
   "devDependencies": {
-    "@dtwo/eslint-config": "workspace:*",
-    "@dtwo/ts-config": "workspace:*"
+    "@d_two/eslint-config": "workspace:*",
+    "@d_two/ts-config": "workspace:*"
   }
 }

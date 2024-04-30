@@ -1,5 +1,5 @@
 {
-  "extends": "@dtwo/ts-config/base.json",
+  "extends": "@d_two/ts-config/base.json",
   "include": [".eslintrc.cjs", "rollup.config.js", "vitest.workspace.ts"],
   "exclude": ["node_modules", "**/dist/**/*"]
 }
