@@ -23,10 +23,15 @@
     "dobby <jm.dev.study@gmail.com> (https://github.com/JiminKim-dev)"
   ],
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+
   "keywords": [
     "eslint"
-  ]
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "deploy": "pnpm publish --access=public"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
