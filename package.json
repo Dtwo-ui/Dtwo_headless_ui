@@ -54,6 +54,7 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.1",
     "@vanilla-extract/css": "^1.14.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

@@ -1,6 +1,6 @@
 {
   "name": "@d_two/switch",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "index": "index.ts",
   "scripts": {
     "test": "vitest",
@@ -31,5 +31,8 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist", "README.md"]
+  "files": [
+    "dist",
+    "README.md"
+  ]
 }

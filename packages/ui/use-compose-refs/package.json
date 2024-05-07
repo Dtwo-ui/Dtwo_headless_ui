@@ -1,9 +1,8 @@
 {
   "name": "@d_two/use-compose-refs",
   "index": "index.tsx",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
-
     "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
     "clean": "rm -rf dist",
     "deploy": "pnpm publish --access=public"
@@ -24,5 +23,8 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist", "README.md"]
+  "files": [
+    "dist",
+    "README.md"
+  ]
 }
