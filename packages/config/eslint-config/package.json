@@ -1,6 +1,6 @@
 {
   "name": "@d_two/eslint-config",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "files": [
     "base.cjs",
     "ui-config.cjs"
@@ -23,7 +23,6 @@
     "dobby <jm.dev.study@gmail.com> (https://github.com/JiminKim-dev)"
   ],
   "license": "MIT",
-
   "keywords": [
     "eslint"
   ],

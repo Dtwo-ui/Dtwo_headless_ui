@@ -1,6 +1,6 @@
 {
   "name": "@d_two/ts-config",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "clean": "rm -rf dist",
     "deploy": "pnpm publish --access=public"

@@ -1,6 +1,6 @@
 {
   "name": "@d_two/use-previous",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "index": "index.tsx",
   "scripts": {
     "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",

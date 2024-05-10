@@ -1,6 +1,6 @@
 {
   "name": "@d_two/switch",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "index": "index.ts",
   "scripts": {
     "test": "vitest",

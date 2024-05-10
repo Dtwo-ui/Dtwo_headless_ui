@@ -1,5 +1,11 @@
 # @d_two/use-compose-refs
 
+## 0.0.2
+
+### Patch Changes
+
+- turborepo build command change
+
 ## 0.0.1
 
 ### Patch Changes
