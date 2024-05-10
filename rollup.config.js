@@ -1,5 +1,6 @@
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import del from 'rollup-plugin-delete';
 import rollupPluginPeerDepsExternalModule from 'rollup-plugin-peer-deps-external';
 import typescript from 'rollup-plugin-typescript2';
 
@@ -44,6 +45,7 @@ export default [
       nodeResolve({ extensions }),
       commonjs(),
       typescript({ tsconfig: tsconfigPath }),
+      del({ targets: 'dist/*' }),
     ],
   },
 ];

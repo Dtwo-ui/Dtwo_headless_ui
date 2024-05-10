@@ -40,6 +40,7 @@
     "jsdom": "^24.0.0",
     "prettier": "^3.1.1",
     "rollup": "^4.13.0",
+    "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^7.6.17",
