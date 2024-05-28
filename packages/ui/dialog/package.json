@@ -1,0 +1,32 @@
+{
+  "name": "@d_two/dialog",
+  "version": "0.0.0",
+  "index": "index.tsx",
+  "scripts": {
+    "build": "rollup -c ../../../rollup.config.js --bundleConfigAsCjs",
+    "clean": "rm -rf dist",
+    "deploy": "pnpm publish --access=public"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@types/react": "*",
+    "@types/react-dom": "*"
+  },
+  "devDependencies": {
+    "@d_two/eslint-config": "workspace:*",
+    "@d_two/ts-config": "workspace:*",
+    "@d_two/primitive": "workspace:*",
+    "@d_two/context": "workspace:*"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

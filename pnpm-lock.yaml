@@ -187,6 +187,34 @@ importers:
         specifier: workspace:*
         version: link:../../config/ts-config
 
+  packages/ui/dialog:
+    dependencies:
+      '@types/react':
+        specifier: '*'
+        version: 18.2.62
+      '@types/react-dom':
+        specifier: '*'
+        version: 18.2.19
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@d_two/context':
+        specifier: workspace:*
+        version: link:../context
+      '@d_two/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@d_two/primitive':
+        specifier: workspace:*
+        version: link:../primitive
+      '@d_two/ts-config':
+        specifier: workspace:*
+        version: link:../../config/ts-config
+
   packages/ui/primitive:
     dependencies:
       '@types/react':
