@@ -214,6 +214,9 @@ importers:
       '@d_two/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
+      '@d_two/use-controllable-state':
+        specifier: workspace:*
+        version: link:../use-controllable-state
 
   packages/ui/primitive:
     dependencies:
