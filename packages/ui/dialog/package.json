@@ -21,7 +21,9 @@
     "@d_two/ts-config": "workspace:*",
     "@d_two/primitive": "workspace:*",
     "@d_two/context": "workspace:*",
-    "@d_two/use-controllable-state": "workspace:*"
+    "@d_two/use-controllable-state": "workspace:*",
+    "@d_two/utils": "workspace:*"
+
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

@@ -217,6 +217,9 @@ importers:
       '@d_two/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
+      '@d_two/utils':
+        specifier: workspace:*
+        version: link:../utils
 
   packages/ui/primitive:
     dependencies:

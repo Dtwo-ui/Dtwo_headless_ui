@@ -1,6 +1,8 @@
 import { createContext } from '@d_two/context';
+import { Primitive } from '@d_two/primitive';
 import { useControllableState } from '@d_two/use-controllable-state';
-import { useContext } from 'react';
+import { composeEventHandler } from '@d_two/utils';
+import React from 'react';
 
 import { Portal } from './Portal';
 
@@ -23,7 +25,7 @@ const DialogPortal = (props: DialogPortalProps) => {
 type DialogContextValueT = {
   modal: boolean;
   open: boolean;
-  onOpenChange(open: boolean): void;
+  onOpenChange: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const [DialogProvider, useDialogContext] = createContext<DialogContextValueT>('DIALOG_PROVIDER');
@@ -57,5 +59,26 @@ const DialogRoot = ({
     </DialogProvider>
   );
 };
+
+/*-----*/
+
+type DialogTriggerProps = React.ComponentPropsWithoutRef<typeof Primitive.button>;
+const DialogTrigger = ({ onClick, children, ...props }: DialogTriggerProps) => {
+  const { onOpenChange } = useDialogContext('DIALOG_TRIGGER');
+  return (
+    <Primitive.button
+      onClick={composeEventHandler(onClick, () => {
+        onOpenChange(prevState => !prevState);
+      })}
+      {...props}
+    >
+      {children}
+    </Primitive.button>
+  );
+};
+
+/*-----*/
+
+//TODO: overlay, dialogContent 구현
 
 export const Dialog = { Portal: DialogPortal };
